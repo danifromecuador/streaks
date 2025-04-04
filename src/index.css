@@ -9,6 +9,11 @@ html, body, #root {
   color: white;
 }
 
+/* general styles */
 .hide {
   display: none !important;
+}
+
+.btn {
+  cursor: pointer;
 }
