@@ -17,8 +17,8 @@ export const App = () => {
       </div>
       <Config />
       <button
-        className='config-btn'
-        onClick={() => store.toggleShow1()}
+        className={`btn config-btn ${store.show1}`}
+        onClick={() => store.toggleVisible1()}
       >Config</button>
     </div>
   )

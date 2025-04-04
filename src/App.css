@@ -13,3 +13,8 @@
   justify-content: space-around;
 }
 
+.config-btn {
+  position: fixed;
+  right: 1vw;
+  bottom: 1vw;
+}
