@@ -8,7 +8,8 @@ import './App.css'
 
 export const App = () => {
   const store = Store()
-  
+  const visibility = store.visible1 ? "" : "hidden"
+
   return (
     <div className="app">
       <div className='main'>
@@ -17,7 +18,7 @@ export const App = () => {
       </div>
       <Config />
       <button
-        className={`btn config-btn ${store.show1}`}
+        className={`btn config-btn ${visibility}`}
         onClick={() => store.toggleVisible1()}
       >Config</button>
     </div>

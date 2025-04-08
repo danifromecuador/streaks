@@ -1,7 +1,6 @@
 .app {
-  border: 1px solid red;
-  width: 95vw;
-  height: 95vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -17,4 +16,8 @@
   position: fixed;
   right: 1vw;
   bottom: 1vw;
+}
+
+.config-btn.hidden {
+  display: none;
 }
