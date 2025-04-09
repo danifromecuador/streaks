@@ -3,4 +3,42 @@
   height: 12vh;
   border: 0.1vh solid red;
   border-radius: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.streak .streak-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.streak .streak-bg {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 0.5vh;
+}
+
+.streak .streak-edit-btn,
+.streak .streak-delete-btn {
+  position: absolute;
+  right: 0;
+  width: 3vh;
+  height: 3vh;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.streak .streak-edit-btn {
+  top: 0;
+  border-top-right-radius: 1vh;
+}
+
+.streak .streak-delete-btn {
+  bottom: 0;
+  border-bottom-right-radius: 1vh;
 }
