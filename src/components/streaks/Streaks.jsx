@@ -8,6 +8,13 @@ export const Streaks = () => {
         <Streak />
         <Streak />
         <Streak />
+        <Streak />
+        <Streak />
+        <Streak />
+        <Streak />
+        <Streak />
+        <Streak />
+        <Streak />
       </div>
       <button className='btn add-streak-btn'>+</button>
     </div>

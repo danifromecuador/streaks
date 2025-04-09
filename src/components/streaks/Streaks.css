@@ -1,7 +1,7 @@
 .streaks {
   height: 15vh;
-  border: 2px solid rgba(0, 255, 255, 0.5);
-  border-radius: 2vw;
+  border: 0.4vh solid rgba(0, 255, 255, 0.5);
+  border-radius: 1.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,16 +9,15 @@
 }
 
 .streaks .streaks-list {
-  /* height: 100%; */
   display: flex;
   align-items: center;
   gap: 1vw;
 }
 
 .streaks .add-streak-btn {
-  /* width: 30px; */
-  /* height: 30px; */
-  /* font-size: 40px; */
+  width: 4vh;
+  height: 4vh;
+  font-size: 4vh;
   display: flex;
   justify-content: center;
   align-items: center;

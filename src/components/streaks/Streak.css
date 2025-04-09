@@ -1,5 +1,6 @@
 .streak {
-  /* width: 60px; */
-  /* height: 60px; */
-  border: 1px solid red;
+  width: 12vh;
+  height: 12vh;
+  border: 0.1vh solid red;
+  border-radius: 1vh;
 }
