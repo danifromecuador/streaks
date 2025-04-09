@@ -8,3 +8,12 @@ html, body, #root {
   background-color: black;
   color: white;
 }
+
+/* general styles */
+.hide {
+  display: none !important;
+}
+
+.btn {
+  cursor: pointer;
+}

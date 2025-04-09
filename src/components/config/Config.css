@@ -1,0 +1,21 @@
+.config {
+  position: fixed;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1px);
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.config.hidden {
+  transform: translateX(120%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.config .close-config-btn {
+  position: fixed;
+  right: 0;
+}
