@@ -3,15 +3,16 @@
   border: 0.4vh solid rgba(0, 255, 255, 0.5);
   border-radius: 1.5vw;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1vw;
+  overflow-x: auto;
 }
 
 .streaks .streaks-list {
   display: flex;
   align-items: center;
   gap: 1vw;
+  margin-left: auto;
 }
 
 .streaks .add-streak-btn {
@@ -21,4 +22,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: auto;
 }
