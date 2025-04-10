@@ -26,3 +26,7 @@
   margin-right: auto;
   flex-shrink: 0;
 }
+
+.streaks .add-streak-btn.hidden {
+  visibility: hidden;
+}
