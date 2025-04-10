@@ -6,6 +6,7 @@
   align-items: center;
   gap: 1vw;
   overflow-x: auto;
+  padding: 0 0.75vw;
 }
 
 .streaks .streaks-list {
