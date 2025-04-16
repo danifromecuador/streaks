@@ -4,6 +4,7 @@
   border: 0.1vh solid red;
   border-radius: 1vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -29,6 +30,7 @@
   width: 3vh;
   height: 3vh;
   border: none;
+  font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,4 +44,10 @@
 .streak .streak-delete-btn {
   bottom: 0;
   border-bottom-right-radius: 1vh;
+}
+
+.streak span {
+  position: absolute;
+  bottom: -3vh;
+  font-size: 2vh;
 }

@@ -10,6 +10,7 @@ export const Streak = () => {
       </a>
       <button className={`btn streak-edit-btn ${visible}`}>E</button>
       <button className={`btn streak-delete-btn ${visible}`}>D</button>
+      <span>Label</span>
     </div>
   )
 }
