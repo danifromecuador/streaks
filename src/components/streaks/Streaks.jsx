@@ -3,16 +3,15 @@ import { Streak } from './Streak'
 import './Streaks.css'
 
 export const Streaks = () => {
-  const [visible, setVisible] = useState('hidden')
+  const [visible, setVisible] = useState('hide')
 
   return (
-    <div className='streaks' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hidden')} >
-      <div className="streaks-list">
-        <Streak />
-        <Streak />
-        <Streak />
-      </div>
-      <button className={`btn add-streak-btn ${visible}`}>+</button>
+    <div className='streaks' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')} >
+      <Streak />
+      <Streak />
+      <Streak />
+      <Streak />
+      <button className={`btn add-streak-btn streak ${visible}`}>+</button>
     </div>
   )
 }
