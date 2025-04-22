@@ -18,7 +18,6 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: calc((1vw + 1vh)/3);
-
 }
 
 .streak .streak-edit-btn,
