@@ -1,5 +1,21 @@
 .streaks {
-  height: 80px;
-  border: 3px solid rgba(0, 255, 255, 0.5);
-  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 10 / 1;
+  border: calc((1vw + 1vh)/10) solid rgba(0, 255, 255, 0.5);
+  border-radius: calc((1vw + 1vh)/1.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.streaks .add-streak-btn {
+  width: 4%;
+  aspect-ratio: 10 / 10;
+  border: none;
+  border-radius: calc((1vw + 1vh)/3);
+  font-size: calc((1vw + 1vh)/0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
