@@ -8,13 +8,15 @@ export const CreateConfirmation = () => {
   const [url, setUrl] = useState("")
 
   const addStreak = () => {
+    const urlDomain = url.split(".")[1]
+    const getDomainIcon = `https://cdn.simpleicons.org/${urlDomain}`
     const data = {
       name: name,
-      url: url
+      url: url,
+      image: getDomainIcon
     }
     store.addStreak(data)
   }
-
 
   return (
     <div className='confirmations'>
