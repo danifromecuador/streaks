@@ -1,5 +1,7 @@
 .confirmations {
+  width: 60%;
+  height: 60%;
   border: 1px solid red;
-  width: 60vh;
-  height: 60vw;
+  position: inherit;
+  margin: auto;
 }
