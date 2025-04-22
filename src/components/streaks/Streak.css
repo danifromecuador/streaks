@@ -1,14 +1,11 @@
 .streak {
-  width: 12vh;
-  height: 12vh;
-  border: 0.1vh solid red;
-  border-radius: 1vh;
+  width: 7%;
+  aspect-ratio: 10 / 12;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
-  flex-shrink: 0;
 }
 
 .streak .streak-container {
@@ -18,17 +15,18 @@
 }
 
 .streak .streak-bg {
-  width: 10vh;
-  height: 10vh;
-  border-radius: 0.5vh;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: calc((1vw + 1vh)/3);
+
 }
 
 .streak .streak-edit-btn,
 .streak .streak-delete-btn {
   position: absolute;
-  right: 0;
-  width: 3vh;
-  height: 3vh;
+  top: 0;
+  width: 25%;
+  aspect-ratio: 1 / 1;
   border: none;
   font-size: 2vh;
   display: flex;
@@ -37,17 +35,15 @@
 }
 
 .streak .streak-edit-btn {
-  top: 0;
+  right: 0;
   border-top-right-radius: 1vh;
 }
 
 .streak .streak-delete-btn {
-  bottom: 0;
+  left: 0;
   border-bottom-right-radius: 1vh;
 }
 
 .streak span {
-  position: absolute;
-  bottom: -3vh;
-  font-size: 2vh;
+  font-size: calc((1vw + 1vh)/1.5);
 }
