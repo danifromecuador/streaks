@@ -9,11 +9,11 @@ export const CreateConfirmation = () => {
 
   const addStreak = () => {
     const urlDomain = url.split(".")[1]
-    const getDomainIcon = `https://cdn.simpleicons.org/${urlDomain}`
+    const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
     const data = {
       name: name,
-      url: url,
-      image: getDomainIcon
+      image: getDomainIcon,
+      url: url
     }
     store.addStreak(data)
   }
