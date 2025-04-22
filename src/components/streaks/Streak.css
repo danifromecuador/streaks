@@ -44,6 +44,8 @@
   border-top-left-radius: calc((1vw + 1vh)/3);
 }
 
-.streak span {
+.streak span,
+.streak .streak-edit-btn,
+.streak .streak-delete-btn {
   font-size: calc((1vw + 1vh)/1.5);
 }
