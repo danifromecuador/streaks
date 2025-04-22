@@ -36,12 +36,12 @@
 
 .streak .streak-edit-btn {
   right: 0;
-  border-top-right-radius: 1vh;
+  border-top-right-radius: calc((1vw + 1vh)/3);
 }
 
 .streak .streak-delete-btn {
   left: 0;
-  border-bottom-right-radius: 1vh;
+  border-top-left-radius: calc((1vw + 1vh)/3);
 }
 
 .streak span {
