@@ -16,6 +16,8 @@ export const CreateConfirmation = () => {
       url: url
     }
     store.addStreak(data)
+    setName("")
+    setUrl("")
   }
 
   return (
