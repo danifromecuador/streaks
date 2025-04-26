@@ -8,31 +8,21 @@ export const CreateConfirmation = () => {
   const [url, setUrl] = useState("")
   const [nameAlert, setNameAlert] = useState("")
   const [urlAlert, setUrlAlert] = useState("")
+  const eraseData = () => (setName(""), setUrl(""))
+  const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
   const addStreak = () => {
-    setNameAlert("")
-    setUrlAlert("")
+    eraseAlerts()
     if (!name.trim().length) setNameAlert("Enter a name")
     if (!url.trim().length) setUrlAlert("Enter an URL")
     if (url.trim().length > 0 && !url.trim().includes("www.")) setUrlAlert("Enter a valid URL like www.example.com")
     if (name.trim().length && url.trim().length && url.trim().includes("www.")) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
-      const data = {
-        name: name,
-        image: getDomainIcon,
-        url: url
-      }
-      store.addStreak(data)
-      eraseInput()
+      store.addStreak({ name: name, image: getDomainIcon, url: url })
+      eraseData()
+      eraseAlerts()
     }
-  }
-
-  const eraseInput = () => {
-    setName("")
-    setUrl("")
-    setNameAlert("")
-    setUrlAlert("")
   }
 
   return (
