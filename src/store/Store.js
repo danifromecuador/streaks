@@ -6,6 +6,6 @@ export const Store = create(devtools((set) => ({
   visible2: false, // show or hide create new streak dialog
   toggleVisible1: () => set((state) => ({ visible1: !state.visible1 })),
   toggleVisible2: () => set((state) => ({ visible2: !state.visible2 })),
-  streaks: [],
+  streaks: [{name: "facebook", image:"https://icons.duckduckgo.com/ip3/facebook.com.ico", url:"www.facebook.com"}],
   addStreak: (data)=> set((state)=>({streaks: [...state.streaks, data]}))
 })))
