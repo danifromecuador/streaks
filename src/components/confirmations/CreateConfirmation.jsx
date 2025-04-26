@@ -4,6 +4,7 @@ import './Confirmations.css'
 
 export const CreateConfirmation = () => {
   const store = Store()
+  const visibility = store.visible2 ? "" : "hide"
   const [name, setName] = useState("")
   const [url, setUrl] = useState("")
   const [nameAlert, setNameAlert] = useState("")
@@ -22,11 +23,12 @@ export const CreateConfirmation = () => {
       store.addStreak({ name: name, image: getDomainIcon, url: url })
       eraseData()
       eraseAlerts()
+      store.toggleVisible2()
     }
   }
 
   return (
-    <div className='confirmations'>
+    <div className={`confirmations ${visibility}`}>
       <h2>Create new Streak</h2>
       <div>
         <p>name</p>

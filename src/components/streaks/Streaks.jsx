@@ -13,7 +13,7 @@ export const Streaks = () => {
       {streaks.map((e) => (
         <Streak name={e.name} image={e.image} url={e.url} />
       ))}
-      <button className={`btn add-streak-btn streak ${visible}`}>+</button>
+      <button className={`btn add-streak-btn streak ${visible}`} onClick={() => store.toggleVisible2()}>+</button>
     </div>
   )
 }
