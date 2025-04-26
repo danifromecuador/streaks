@@ -4,4 +4,11 @@
   border: 1px solid red;
   position: inherit;
   margin: auto;
+  position: relative;
+}
+
+.confirmations .close-btn {
+  position: absolute;
+  top: calc((1vw + 1vh)/3);
+  right: calc((1vw + 1vh)/3);
 }

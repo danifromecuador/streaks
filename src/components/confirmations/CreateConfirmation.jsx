@@ -30,6 +30,7 @@ export const CreateConfirmation = () => {
   return (
     <div className={`confirmations ${visibility}`}>
       <h2>Create new Streak</h2>
+      <button className='btn close-btn' onClick={() => store.toggleVisible2()}>X</button>
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -40,7 +41,7 @@ export const CreateConfirmation = () => {
         <input type="text" value={url} onChange={((e) => setUrl(e.target.value))} />
         <span>{urlAlert}</span>
       </div>
-      <button type="submit" onClick={() => addStreak()}>Create</button>
+      <button type="submit" className='btn' onClick={() => addStreak()}>Create</button>
     </div >
   )
 }
