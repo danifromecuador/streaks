@@ -12,11 +12,10 @@ export const CreateConfirmation = () => {
   const addStreak = () => {
     setNameAlert("")
     setUrlAlert("")
-    setName(name.trim())
-    setUrl(url.trim())
-    if (!name.length) setNameAlert("Enter a valid name")
-    if (!url.length) setUrlAlert("Enter a valid URL")
-    if (name && url) {
+    if (!name.trim().length) setNameAlert("Enter a name")
+    if (!url.trim().length) setUrlAlert("Enter an URL")
+    if (url.trim().length > 0 && !url.trim().includes("www.")) setUrlAlert("Enter a valid URL like www.example.com")
+    if (name.trim().length && url.trim().length && url.trim().includes("www.")) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
       const data = {
@@ -25,11 +24,15 @@ export const CreateConfirmation = () => {
         url: url
       }
       store.addStreak(data)
-      setName("")
-      setUrl("")
-      setNameAlert("")
-      setUrlAlert("")
+      eraseInput()
     }
+  }
+
+  const eraseInput = () => {
+    setName("")
+    setUrl("")
+    setNameAlert("")
+    setUrlAlert("")
   }
 
   return (
