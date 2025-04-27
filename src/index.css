@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   background-color: black;
   color: white;
 }
@@ -14,6 +16,7 @@ html, body, #root {
   display: none !important;
 }
 
-.btn, a {
+.btn,
+a {
   cursor: pointer;
 }
