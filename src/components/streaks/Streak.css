@@ -49,3 +49,11 @@
 .streak .streak-delete-btn {
   font-size: calc((1vw + 1vh)/1.5);
 }
+
+.streak span {
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
