@@ -1,5 +1,5 @@
 .streak {
-  width: 7%;
+  width: 7vw;
   aspect-ratio: 10 / 12;
   display: flex;
   flex-direction: column;
