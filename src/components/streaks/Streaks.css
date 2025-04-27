@@ -20,7 +20,7 @@
   width: 4vw;
   aspect-ratio: 1 / 1;
   position: absolute;
-  right: -7vw;
+  right: -5vw;
   border: none;
   border-radius: calc((1vw + 1vh)/3);
   font-size: calc((1vw + 1vh)/0.5);
