@@ -8,7 +8,13 @@
 }
 
 .confirmations .close-btn {
+  width: 2vw;
+  aspect-ratio: 1/1;
   position: absolute;
   top: calc((1vw + 1vh)/3);
   right: calc((1vw + 1vh)/3);
+  font-size: calc((1vw + 1vh)/1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
