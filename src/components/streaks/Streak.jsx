@@ -6,9 +6,12 @@ export const Streak = ({ name, image, url }) => {
   const store = Store()
   const [visible, setVisible] = useState('hide')
   const deleteStreak = () => {
-    store.toggleVisible3()
     store.setStreakNameToDelete(name)
+    // show delete streak dialog and hide other dialogs
+    store.toggleVisible3()
+    store.visible2 && store.toggleVisible2()
   }
+
   return (
     <div className='streak' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')}>
       <a className='streak-container' href={`https://${url}`} target="_blank" rel='noopener noreferrer'>
