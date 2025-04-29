@@ -17,7 +17,8 @@
 
 .config .close-config-btn {
   position: fixed;
-  right: 0;
+  right: 1vw;
+  top: 1vh;
   display: flex;
   justify-content: center;
   align-items: center;

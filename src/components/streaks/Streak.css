@@ -21,31 +21,21 @@
   border-radius: calc((1vw + 1vh)/3);
 }
 
-.streak .streak-edit-btn,
 .streak .streak-delete-btn {
-  position: absolute;
-  top: 0;
   width: 25%;
   aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 0;
+  left: 0;
   border: none;
+  border-top-left-radius: calc((1vw + 1vh)/3);
   font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.streak .streak-edit-btn {
-  right: 0;
-  border-top-right-radius: calc((1vw + 1vh)/3);
-}
-
-.streak .streak-delete-btn {
-  left: 0;
-  border-top-left-radius: calc((1vw + 1vh)/3);
-}
-
 .streak span,
-.streak .streak-edit-btn,
 .streak .streak-delete-btn {
   font-size: calc((1vw + 1vh)/1.5);
 }
