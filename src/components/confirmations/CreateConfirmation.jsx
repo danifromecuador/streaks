@@ -35,12 +35,12 @@ export const CreateConfirmation = () => {
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <span>{nameAlert}</span>
+        <span className='warning'>{nameAlert}</span>
       </div>
       <div>
         <p>url</p>
         <input type="text" value={url} onChange={((e) => setUrl(e.target.value))} />
-        <span>{urlAlert}</span>
+        <span className='warning'>{urlAlert}</span>
       </div>
       <button type="submit" className='btn create' onClick={() => addStreak()}>CREATE</button>
     </div >

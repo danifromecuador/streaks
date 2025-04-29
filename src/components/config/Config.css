@@ -17,8 +17,8 @@
 
 .config .close-config-btn {
   position: fixed;
-  right: 1vw;
-  top: 1vh;
+  right: calc((1vw + 1vh)/2);
+  top: calc((1vw + 1vh)/2);
   display: flex;
   justify-content: center;
   align-items: center;

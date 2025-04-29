@@ -1,6 +1,6 @@
 .confirmations {
   width: fit-content;
-  height: 60%;
+  height: fit-content;
   padding: calc((1vw + 1vh)/0.5);
   border-radius: calc((1vw + 1vh)/3);
   position: inherit;
@@ -12,10 +12,18 @@
   gap: 1vw;
 }
 
+.confirmations p.warning,
+.confirmations span.warning {
+  color: red;
+  margin-left: 1vw;
+}
+
 .confirmations .btn.create,
 .confirmations .btn.delete,
 .confirmations .btn.cancel {
   width: fit-content;
+  margin-top: 3vh;
+  padding: 0 0.5vw;
 }
 
 .confirmations .delete-cancel-btns {

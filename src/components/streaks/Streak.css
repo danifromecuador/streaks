@@ -28,8 +28,6 @@
   top: 0;
   left: 0;
   border: none;
-  border-top-left-radius: calc((1vw + 1vh)/3);
-  font-size: 2vh;
   display: flex;
   justify-content: center;
   align-items: center;
