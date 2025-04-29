@@ -17,7 +17,6 @@ export const Streak = ({ name, image, url }) => {
       <a className='streak-container' href={`https://${url}`} target="_blank" rel='noopener noreferrer'>
         <img className='streak-bg' src={image} alt={name} />
       </a>
-      <button className={`btn streak-edit-btn ${visible}`}>E</button>
       <button className={`btn streak-delete-btn ${visible}`} onClick={deleteStreak}>D</button>
       <span>{name}</span>
     </div>
