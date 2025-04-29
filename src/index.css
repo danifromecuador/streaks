@@ -26,4 +26,5 @@ button, input, input:active, input:focus {
   border: calc((1vw + 1vh)/10) solid rgba(119, 119, 119, 0.5);
   border-radius: calc((1vw + 1vh)/5);
   outline: none;
+  padding: 0 0.3vw;
 }

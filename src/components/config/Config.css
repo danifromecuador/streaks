@@ -16,6 +16,8 @@
 }
 
 .config .close-config-btn {
+  width: 2vw;
+  aspect-ratio: 1/1;
   position: fixed;
   right: calc((1vw + 1vh)/2);
   top: calc((1vw + 1vh)/2);

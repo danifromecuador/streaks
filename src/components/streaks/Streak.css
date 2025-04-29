@@ -33,11 +33,6 @@
   align-items: center;
 }
 
-.streak span,
-.streak .streak-delete-btn {
-  font-size: calc((1vw + 1vh)/1.5);
-}
-
 .streak span {
   width: 100%;
   text-align: center;
