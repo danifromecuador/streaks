@@ -13,14 +13,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 1vw;
+  gap: 2vw;
 }
 
 .streaks .streaks-list .add-streak-btn {
   width: 4vw;
   aspect-ratio: 1 / 1;
   position: absolute;
-  right: -5vw;
+  right: -7vw;
   border: none;
   border-radius: calc((1vw + 1vh)/3);
   font-size: calc((1vw + 1vh)/0.5);
