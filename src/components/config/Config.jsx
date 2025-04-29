@@ -1,3 +1,4 @@
+import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Config.css'
 
@@ -11,7 +12,7 @@ export const Config = () => {
       <button
         className='btn close-config-btn'
         onClick={() => store.toggleVisible1()}
-      >Close</button>
+      ><CloseIcon /></button>
     </div>
   )
 }

@@ -19,6 +19,9 @@
   position: fixed;
   right: 1vw;
   bottom: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .config-btn.hidden {

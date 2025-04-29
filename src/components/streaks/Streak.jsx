@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import { Store } from '../../store/Store'
 import './Streak.css'
 
@@ -17,7 +18,7 @@ export const Streak = ({ name, image, url }) => {
       <a className='streak-container' href={`https://${url}`} target="_blank" rel='noopener noreferrer'>
         <img className='streak-bg' src={image} alt={name} />
       </a>
-      <button className={`btn streak-delete-btn ${visible}`} onClick={deleteStreak}>D</button>
+      <button className={`btn streak-delete-btn ${visible}`} onClick={deleteStreak}><DeleteIcon /></button>
       <span>{name}</span>
     </div>
   )

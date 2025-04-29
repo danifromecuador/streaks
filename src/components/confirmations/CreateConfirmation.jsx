@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Confirmations.css'
 
@@ -30,7 +31,7 @@ export const CreateConfirmation = () => {
   return (
     <div className={`confirmations ${visibility}`}>
       <h2>Create new Streak</h2>
-      <button className='btn close-btn' onClick={() => store.toggleVisible2()}>X</button>
+      <button className='btn close-btn' onClick={() => store.toggleVisible2()}><CloseIcon /></button>
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />

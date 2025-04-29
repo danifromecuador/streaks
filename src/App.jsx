@@ -1,3 +1,4 @@
+import SettingsIcon from '@mui/icons-material/Settings';
 import { Store } from './store/Store'
 import { Config } from './components/config/Config'
 import { Grid } from './components/grid/Grid'
@@ -20,7 +21,7 @@ export const App = () => {
       <button
         className={`btn config-btn ${visibility}`}
         onClick={() => store.toggleVisible1()}
-      >Config</button>
+      ><SettingsIcon /></button>
     </div>
   )
 }
