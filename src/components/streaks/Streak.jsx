@@ -15,7 +15,7 @@ export const Streak = ({ name, image, url }) => {
 
   return (
     <div className='streak' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')}>
-      <a className='streak-container' href={`https://${url}`} target="_blank" rel='noopener noreferrer'>
+      <a className='streak-container' href={url} target="_blank" rel='noopener noreferrer'>
         <img className='streak-bg' src={image} alt={name} />
       </a>
       <button className={`btn streak-delete-btn ${visible}`} onClick={deleteStreak}><DeleteIcon sx={{ fontSize: 'calc((1.5vw + 1.5vh)/1.5)' }}/></button>
