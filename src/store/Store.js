@@ -9,7 +9,7 @@ export const Store = create(devtools(set => ({
   toggleVisible2: () => set(state => ({ visible2: !state.visible2 })),
   toggleVisible3: () => set(state => ({ visible3: !state.visible3 })),
 
-  streaks: [{ name: "facebook", image: "https://icons.duckduckgo.com/ip3/facebook.com.ico", url: "www.facebook.com" }],
+  streaks: JSON.parse(localStorage.getItem("streaks")) || [],
   addStreak: data => set(state => ({ streaks: [...state.streaks, data] })),
 
   streakNameToDelete: "",

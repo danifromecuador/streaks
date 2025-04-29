@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Confirmations.css'
@@ -27,6 +27,8 @@ export const CreateConfirmation = () => {
       store.toggleVisible2()
     }
   }
+
+  useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
 
   return (
     <div className={`confirmations ${visibility}`}>
