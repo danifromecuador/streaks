@@ -15,8 +15,10 @@ export const DeleteConfirmation = () => {
       <h2>Are you sure to delete {store.streakNameToDelete}?</h2>
       <button className='btn close-btn' onClick={() => store.toggleVisible3()}><CloseIcon /></button>
       <p>You will lost your streak!</p>
-      <button className='btn' onClick={deleteStreak}>DELETE</button>
-      <button className='btn' onClick={() => store.toggleVisible3()}>CANCEL</button>
-    </div>
+      <div className='delete-cancel-btns'>
+        <button className='btn delete' onClick={deleteStreak}>DELETE</button>
+        <button className='btn cancel' onClick={() => store.toggleVisible3()}>CANCEL</button>
+      </div >
+    </div >
   )
 }
