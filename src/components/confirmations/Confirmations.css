@@ -6,7 +6,7 @@
   position: inherit;
   margin: auto;
   position: relative;
-  background-color: blue;
+  background-color: #171f25;
   display: flex;
   flex-direction: column;
   gap: 1vw;
@@ -14,7 +14,7 @@
 
 .confirmations p.warning,
 .confirmations span.warning {
-  color: red;
+  color: #c90a02;
   margin-left: 1vw;
 }
 

@@ -1,7 +1,7 @@
 .streaks {
   width: 100%;
   aspect-ratio: 10 / 1;
-  border: calc((1vw + 1vh)/10) solid rgba(0, 255, 255, 0.5);
+  border: calc((1vw + 1vh)/10) solid #8fc9b9;
   border-radius: calc((1vw + 1vh)/1.5);
   display: flex;
   justify-content: center;
