@@ -1,6 +1,6 @@
 .grid {
   width: 100%;
-  height: 65vh;
-  border: calc((1vw + 1vh)/10) solid rgba(0, 255, 255, 0.5);
+  height: 100%;
+  border: calc((1vw + 1vh)/10) solid #8fc9b9;
   border-radius: calc((1vw + 1vh)/1.5);
 }

@@ -2,11 +2,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: calc((1vw + 1vh)/1.5);
 }
 
-html, body, #root {
-  background-color: black;
-  color: white;
+html,
+body,
+#root {
+  background-color: #090f13;
+  color: #f2eab7;
 }
 
 /* general styles */
@@ -14,6 +17,14 @@ html, body, #root {
   display: none !important;
 }
 
-.btn, a {
+.btn,
+a {
   cursor: pointer;
+}
+
+button, input, input:active, input:focus {
+  border: calc((1vw + 1vh)/10) solid rgba(119, 119, 119, 0.5);
+  border-radius: calc((1vw + 1vh)/5);
+  outline: none;
+  padding: 0 0.3vw;
 }

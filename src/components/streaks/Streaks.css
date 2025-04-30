@@ -1,17 +1,26 @@
 .streaks {
   width: 100%;
   aspect-ratio: 10 / 1;
-  border: calc((1vw + 1vh)/10) solid rgba(0, 255, 255, 0.5);
+  border: calc((1vw + 1vh)/10) solid #8fc9b9;
   border-radius: calc((1vw + 1vh)/1.5);
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1vw;
+  align-items: center;
 }
 
-.streaks .add-streak-btn {
-  width: 4%;
-  aspect-ratio: 10 / 10;
+.streaks .streaks-list {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.streaks .streaks-list .add-streak-btn {
+  width: 4vw;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  right: -7vw;
   border: none;
   border-radius: calc((1vw + 1vh)/3);
   font-size: calc((1vw + 1vh)/0.5);
