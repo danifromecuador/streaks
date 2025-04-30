@@ -9,7 +9,7 @@ export const Streak = ({ name, image, url }) => {
   const deleteStreak = () => {
     store.setStreakNameToDelete(name)
     // show delete streak dialog and hide other dialogs
-    store.toggleVisible3()
+    !store.visible3 && store.toggleVisible3()
     store.visible2 && store.toggleVisible2()
   }
 
