@@ -15,7 +15,7 @@ export const Streaks = () => {
   }
 
   return (
-    <div className='streaks' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')} >
+    <div className='streaks' onMouseEnter={() => setVisible(`${streaks.length < 10 ? '' : 'hide'}`)} onMouseLeave={() => setVisible('hide')} >
       <div className="streaks-list">
         {streaks.map((e, k) => (
           <Streak name={e.name} image={e.image} url={e.url} key={k} />
