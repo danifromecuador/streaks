@@ -1,17 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-size: calc((1vw + 1vh)/1.5);
-}
-
-html,
-body,
-#root {
-  background-color: #090f13;
-  color: #f2eab7;
-}
-
 /* general styles */
 .hide {
   display: none !important;
