@@ -21,11 +21,14 @@ export const CreateConfirmation = () => {
     if (name.trim().length && url.trim().length) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
-      store.addStreak({ name: name, image: getDomainIcon, url: url })
+      const id = Date.now()
+      store.addStreak({ id: id, name: name, image: getDomainIcon, url: url })
       eraseData()
       eraseAlerts()
       store.toggleVisible2()
     }
+    console.log(store.streaks);
+    
   }
 
   useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
