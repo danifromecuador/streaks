@@ -13,7 +13,7 @@ export const CreateConfirmation = () => {
   const eraseData = () => (setName(""), setUrl(""))
   const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
-  const StreakValidations = () => {
+  const ValidateStreak = () => {
     eraseAlerts()
     if (!name.trim().length) {
       setNameAlert("Enter a name")
@@ -31,7 +31,7 @@ export const CreateConfirmation = () => {
   }
 
   const addStreak = () => {
-    if (StreakValidations()) {
+    if (ValidateStreak()) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
       const id = Date.now()
@@ -42,12 +42,18 @@ export const CreateConfirmation = () => {
     }
   }
 
+  const closeBtn = () => {
+    store.toggleVisible2()
+    eraseData()
+    eraseAlerts()
+  }
+
   useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
 
   return (
     <div className={`confirmations ${visibility}`}>
       <h2>Create new Streak</h2>
-      <button className='btn close-btn' onClick={() => store.toggleVisible2()}><CloseIcon /></button>
+      <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
