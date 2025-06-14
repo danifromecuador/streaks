@@ -3,11 +3,13 @@ import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import { Store } from '../../store/Store'
 import './Streak.css'
 
-export const Streak = ({ name, image, url }) => {
+export const Streak = ({ id, name, image, url }) => {
   const store = Store()
   const [visible, setVisible] = useState('hide')
   const deleteStreak = () => {
-    store.setStreakNameToDelete(name)
+    // here we aren't deleting the streak, just setting the id to the streak that is going to be deleted
+    // real deletion of that streak takes place on delete confirmation dialog
+    store.setStreakIdToDelete(id)
     // show delete streak dialog and hide other dialogs
     !store.visible3 && store.toggleVisible3()
     store.visible2 && store.toggleVisible2()
