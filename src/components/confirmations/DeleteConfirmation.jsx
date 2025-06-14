@@ -7,6 +7,7 @@ export const DeleteConfirmation = () => {
   const visibility = store.visible3 ? "" : "hide"
   const deleteStreak = () => {
     store.deleteStreak()
+    store.setStreakIdToDelete(0)
     store.toggleVisible3()
   }
 

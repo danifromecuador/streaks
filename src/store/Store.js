@@ -12,10 +12,10 @@ export const Store = create(devtools(set => ({
   streaks: JSON.parse(localStorage.getItem("streaks")) || [],
   addStreak: data => set(state => ({ streaks: [...state.streaks, data] })),
 
-  streakNameToDelete: "",
-  setStreakNameToDelete: name => set({ streakNameToDelete: name }),
+  streakIdToDelete: 0,
+  setStreakIdToDelete: id => set({ streakIdToDelete: id }),
   deleteStreak: () => set(state => {
-    const newStreaksArray = state.streaks.filter(obj => obj.name !== state.streakNameToDelete)
+    const newStreaksArray = state.streaks.filter(obj => obj.id !== state.streakIdToDelete)
     return ({ streaks: newStreaksArray })
   }),
 })))
