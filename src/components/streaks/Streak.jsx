@@ -9,7 +9,12 @@ export const Streak = ({ id, name, image, url }) => {
   const [visible, setVisible] = useState('hide')
 
   const editStreak = () => {
-    // TODO
+    // here we aren't editing the streak, just setting the id to the streak that is going to be edited
+    // real edition of that streak takes place on edit confirmation dialog
+    store.setStreakIdToEdit(id)
+    store.visible2 && store.toggleVisible2()
+    store.visible3 && store.toggleVisible3()
+    store.toggleVisible4()
   }
 
   const deleteStreak = () => {
@@ -17,8 +22,9 @@ export const Streak = ({ id, name, image, url }) => {
     // real deletion of that streak takes place on delete confirmation dialog
     store.setStreakIdToDelete(id)
     // show delete streak dialog and hide other dialogs
-    !store.visible3 && store.toggleVisible3()
     store.visible2 && store.toggleVisible2()
+    store.toggleVisible3()
+    store.visible4 && store.toggleVisible4()
   }
 
   return (
