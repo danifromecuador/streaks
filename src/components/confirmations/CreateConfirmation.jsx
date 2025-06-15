@@ -15,16 +15,12 @@ export const CreateConfirmation = () => {
 
   const ValidateStreak = () => {
     eraseAlerts()
-    if (!name.trim().length) {
+    if (!name.trim()) {
       setNameAlert("Enter a name")
       return false
     }
-    if (!url.trim().length) {
+    if (!url.trim()) {
       setUrlAlert("Enter a URL")
-      return false
-    }
-    if (url.trim().length > 0 && !url.trim().includes("www.")) {
-      setUrlAlert("Enter a valid URL like www.example.com")
       return false
     }
     return true
