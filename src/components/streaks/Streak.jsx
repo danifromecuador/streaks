@@ -14,7 +14,7 @@ export const Streak = ({ id, name, image, url }) => {
     store.setStreakIdToEdit(id)
     store.visible2 && store.toggleVisible2()
     store.visible3 && store.toggleVisible3()
-    store.toggleVisible4()
+    !store.visible4 && store.toggleVisible4()
   }
 
   const deleteStreak = () => {
@@ -23,7 +23,7 @@ export const Streak = ({ id, name, image, url }) => {
     store.setStreakIdToDelete(id)
     // show delete streak dialog and hide other dialogs
     store.visible2 && store.toggleVisible2()
-    store.toggleVisible3()
+    !store.visible3 && store.toggleVisible3()
     store.visible4 && store.toggleVisible4()
   }
 

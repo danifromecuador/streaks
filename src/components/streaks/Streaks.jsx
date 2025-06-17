@@ -10,7 +10,7 @@ export const Streaks = () => {
 
   const addStreak = () => {
     // show add streak dialog and close other open dialogs
-    store.toggleVisible2()
+    !store.visible2 && store.toggleVisible2()
     store.visible3 && store.toggleVisible3()
     store.visible4 && store.toggleVisible4()
   }
