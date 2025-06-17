@@ -7,10 +7,22 @@ export const EditConfirmation = () => {
   const store = Store()
   const streakToEdit = store.streaks.find(streak => streak.id === store.streakIdToEdit)
   const [name, setName] = useState(streakToEdit.name)
+  const [nameAlert, setNameAlert] = useState("")
+
+  const validateStreak = () => {
+    setNameAlert("")
+    if (!name.trim()) {
+      setNameAlert("Enter a name")
+      return false
+    }
+    return true
+  }
 
   const saveEditedStreak = () => {
-    store.saveEditedStreak(name)
-    localStorage.setItem("streaks", JSON.stringify(store.streaks))
+    if (validateStreak()) {
+      store.saveEditedStreak(name)
+      localStorage.setItem("streaks", JSON.stringify(store.streaks))
+    }
   }
 
   return (
@@ -20,6 +32,7 @@ export const EditConfirmation = () => {
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <span className='warning'>{nameAlert}</span>
       </div>
       <button type="submit" className='btn create' onClick={saveEditedStreak}>SAVE</button>
     </div>
