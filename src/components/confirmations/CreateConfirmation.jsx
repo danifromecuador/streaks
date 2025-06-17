@@ -13,7 +13,7 @@ export const CreateConfirmation = () => {
   const eraseData = () => (setName(""), setUrl(""))
   const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
-  const ValidateStreak = () => {
+  const validateStreak = () => {
     eraseAlerts()
     if (!name.trim()) {
       setNameAlert("Enter a name")
@@ -27,7 +27,7 @@ export const CreateConfirmation = () => {
   }
 
   const addStreak = () => {
-    if (ValidateStreak()) {
+    if (validateStreak()) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
       const id = Date.now()
