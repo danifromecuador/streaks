@@ -1,70 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Confirmations.css'
 
 export const EditConfirmation = () => {
   const store = Store()
-  const visibility = store.visible4 ? "" : "hide"
-  const [name, setName] = useState("")
-  const [url, setUrl] = useState("")
-  const [nameAlert, setNameAlert] = useState("")
-  const [urlAlert, setUrlAlert] = useState("")
-  const eraseData = () => (setName(""), setUrl(""))
-  const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
+  const streakToEdit = store.streaks.find(streak => streak.id === store.streakIdToEdit)
+  const [name, setName] = useState(streakToEdit.name)
 
-  const ValidateStreak = () => {
-    eraseAlerts()
-    if (!name.trim().length) {
-      setNameAlert("Enter a name")
-      return false
-    }
-    if (!url.trim().length) {
-      setUrlAlert("Enter a URL")
-      return false
-    }
-    if (url.trim().length > 0 && !url.trim().includes("www.")) {
-      setUrlAlert("Enter a valid URL like www.example.com")
-      return false
-    }
-    return true
+  const saveEditedStreak = () => {
+    store.saveEditedStreak(name)
+    localStorage.setItem("streaks", JSON.stringify(store.streaks))
   }
-
-  const addStreak = () => {
-    if (ValidateStreak()) {
-      const urlDomain = url.split(".")[1]
-      const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
-      const id = Date.now()
-      store.addStreak({ id: id, name: name, image: getDomainIcon, url: url })
-      eraseData()
-      eraseAlerts()
-      store.toggleVisible2()
-    }
-  }
-
-  const closeBtn = () => {
-    store.toggleVisible4()
-    eraseData()
-    eraseAlerts()
-  }
-
-  useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
 
   return (
-    <div className={`confirmations ${visibility}`}>
-      <h2>Edit Streak</h2>
-      <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
+    <div className={`confirmations`}>
+      <h2>Edit {streakToEdit.name} Streak</h2>
+      <button className='btn close-btn' onClick={() => store.setStreakIdToEdit(null)}><CloseIcon /></button>
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
-        <span className='warning'>{nameAlert}</span>
       </div>
-      <div>
-        <p>url</p>
-        <input type="text" value={url} onChange={(e => setUrl(e.target.value))} />
-        <span className='warning'>{urlAlert}</span>
-      </div>
-      <button type="submit" className='btn create' onClick={addStreak}>CREATE</button>
-    </div >
+      <button type="submit" className='btn create' onClick={saveEditedStreak}>SAVE</button>
+    </div>
   )
 }
