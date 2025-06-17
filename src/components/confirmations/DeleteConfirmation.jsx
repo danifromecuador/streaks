@@ -4,21 +4,15 @@ import './Confirmations.css'
 
 export const DeleteConfirmation = () => {
   const store = Store()
-  const visibility = store.visible3 ? "" : "hide"
-  const deleteStreak = () => {
-    store.deleteStreak()
-    store.setStreakIdToDelete(0)
-    store.toggleVisible3()
-  }
+  const streakNameToDelete = store.streaks.find(streak => streak.id === store.streakIdToDelete).name
 
   return (
-    <div className={`confirmations ${visibility}`}>
-      <h2>Are you sure to delete {store.streakNameToDelete}?</h2>
-      <button className='btn close-btn' onClick={() => store.toggleVisible3()}><CloseIcon /></button>
+    <div className={`confirmations`}>
+      <h2>Are you sure to delete {streakNameToDelete}?</h2>
+      <button className='btn close-btn' onClick={() => store.setStreakIdToDelete(null)}><CloseIcon /></button>
       <p className='warning'>You will lost your streak!</p>
       <div className='delete-cancel-btns'>
-        <button className='btn delete' onClick={deleteStreak}>DELETE</button>
-        <button className='btn cancel' onClick={() => store.toggleVisible3()}>CANCEL</button>
+        <button className='btn delete' onClick={() => store.deleteStreak()}>DELETE</button>
       </div >
     </div >
   )
