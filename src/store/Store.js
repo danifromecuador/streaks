@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
+import { addStreak, saveEditedStreak, deleteStreak } from './streaks'
 
 export const Store = create(devtools(set => ({
   visible1: true, // show or hide config main menu
@@ -8,21 +9,14 @@ export const Store = create(devtools(set => ({
   toggleVisible2: () => set(state => ({ visible2: !state.visible2 }), false, 'toggleVisible2'),
 
   streaks: JSON.parse(localStorage.getItem("streaks")) || [],
-  addStreak: data => set(state => ({ streaks: [...state.streaks, data] }), undefined, 'addStreak'),
+  // addStreak: data => set(state => ({ streaks: [...state.streaks, data] }), undefined, 'addStreak'),
+  addStreak: data => addStreak(data, set),
 
   streakIdToEdit: null,
   setStreakIdToEdit: id => set({ streakIdToEdit: id }, undefined, 'setStreakIdToEdit'),
-  saveEditedStreak: name => set(state => {
-    const newStreaksArray = state.streaks
-    const streakIndexToEdit = state.streaks.findIndex(streak => streak.id === state.streakIdToEdit)
-    newStreaksArray[streakIndexToEdit].name = name
-    return ({ streaks: newStreaksArray, streakIdToEdit: null })
-  }, undefined, 'saveEditedStreak'),
+  saveEditedStreak: name => saveEditedStreak(name, set),
 
   streakIdToDelete: null,
   setStreakIdToDelete: id => set({ streakIdToDelete: id }, undefined, 'setStreakIdToDelete'),
-  deleteStreak: () => set(state => {
-    const newStreaksArray = state.streaks.filter(obj => obj.id !== state.streakIdToDelete)
-    return ({ streaks: newStreaksArray, streakIdToDelete: null })
-  }, undefined, 'deleteStreak'),
+  deleteStreak: () => deleteStreak(set),
 })))
