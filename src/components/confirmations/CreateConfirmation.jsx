@@ -31,7 +31,7 @@ export const CreateConfirmation = () => {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
       const id = Date.now()
-      store.addStreak({ id: id, name: name, image: getDomainIcon, url: url })
+      store.addStreak({ id: id, name: name.trim(), image: getDomainIcon, url: url })
       eraseData()
       eraseAlerts()
       store.toggleVisible2()

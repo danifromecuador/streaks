@@ -20,7 +20,7 @@ export const EditConfirmation = () => {
 
   const saveEditedStreak = () => {
     if (validateStreak()) {
-      store.saveEditedStreak(name)
+      store.saveEditedStreak(name.trim())
       localStorage.setItem("streaks", JSON.stringify(store.streaks))
     }
   }
