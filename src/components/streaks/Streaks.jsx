@@ -3,7 +3,7 @@ import { Store } from '../../store/Store'
 import { Streak } from './Streak'
 import './Streaks.css'
 
-export const Streaks = () => {
+export const Streaks = ({ className }) => {
   const store = Store()
   const streaks = store.streaks
   const [visible, setVisible] = useState('hide')
@@ -14,8 +14,12 @@ export const Streaks = () => {
     store.setStreakIdToDelete(null) // hide delete streak dialog
   }
 
+  const mouseEnter = () => {
+    className ? setVisible(`${streaks.length < 60 ? '' : 'hide'}`) : setVisible(`${streaks.length < 10 ? '' : 'hide'}`)
+  }
+  
   return (
-    <div className='streaks' onMouseEnter={() => setVisible(`${streaks.length < 10 ? '' : 'hide'}`)} onMouseLeave={() => setVisible('hide')} >
+    <div className={`streaks ${className}`} onMouseEnter={() => mouseEnter()} onMouseLeave={() => setVisible('hide')} >
       <div className="streaks-list">
         {streaks.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} />))}
         <button className={`btn add-streak-btn ${visible}`} onClick={addStreak}>+</button>

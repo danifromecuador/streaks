@@ -1,9 +1,10 @@
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Store } from './store/Store'
 import { Config } from './components/config/Config'
-import { Grid } from './components/grid/Grid'
 import { Streaks } from './components/streaks/Streaks'
-
+import { CreateConfirmation } from './components/confirmations/CreateConfirmation'
+import { EditConfirmation } from './components/confirmations/EditConfirmation'
+import { DeleteConfirmation } from './components/confirmations/DeleteConfirmation';
 import './App.css'
 
 
@@ -15,7 +16,10 @@ export const App = () => {
     <div className="app">
       <div className='main'>
         <Streaks />
-        <Grid />
+        <Streaks className='shortcuts' />
+        <CreateConfirmation />
+        {store.streakIdToEdit && <EditConfirmation />}
+        {store.streakIdToDelete && <DeleteConfirmation />}
       </div>
       <Config />
       <button
