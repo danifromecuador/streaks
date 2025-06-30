@@ -20,8 +20,10 @@
 }
 
 .streaks.shortcuts {
+  height: 100%;
   padding: 3vh 0;
   display: grid;
   grid-template-columns: repeat(10, auto);
   row-gap: 3vh;
 }
+
