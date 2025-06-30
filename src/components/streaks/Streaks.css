@@ -4,8 +4,9 @@
   aspect-ratio: 10 / 1;
   padding: 1vh 0;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2vw;
 }
 
 .streaks .btn.add-streak-btn {
@@ -21,9 +22,6 @@
 
 .streaks.shortcuts {
   height: 100%;
-  padding: 3vh 0;
   display: grid;
   grid-template-columns: repeat(10, auto);
-  row-gap: 3vh;
 }
-
