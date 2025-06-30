@@ -5,28 +5,24 @@ import './Streaks.css'
 
 export const Streaks = ({ type }) => {
   const store = Store()
-  const streaks = store.streaks
+  let streaksOrShortcutsArray = store[type]
   const [visible, setVisible] = useState('')
 
   const add = () => {
-    if (type === 'streaks') {
-      !store.visible2 && store.toggleVisible2() // show create streak dialog
-      store.setStreakIdToEdit(null) // logic to hide edit streak dialog
-      store.setStreakIdToDelete(null) // logic to hide delete streak dialog
-    }
-    if (type === 'shortcuts') {
-      console.log(23)
-    }
+    !store.visible2 && store.toggleVisible2() // show create dialog
+    store.setStreakIdToEdit(null) // logic to hide edit streak dialog
+    store.setStreakIdToDelete(null) // logic to hide delete streak dialog
+    store.setStreakOrShortcut(type.slice(0, -1)) // set type for rendering properly the create dialog 
   }
 
   useEffect(() => {
-    if (type === 'streaks') { setVisible(`${streaks.length < 11 ? '' : 'hide'}`) }
-    if (type === 'shortcuts') { setVisible(`${streaks.length < 44 ? '' : 'hide'}`) }
-  }, [type, streaks.length])
+    if (type === 'streaks') { setVisible(`${streaksOrShortcutsArray.length < 11 ? '' : 'hide'}`) }
+    if (type === 'shortcuts') { setVisible(`${streaksOrShortcutsArray.length < 44 ? '' : 'hide'}`) }
+  }, [type, streaksOrShortcutsArray.length])
 
   return (
     <div className={type} >
-      {streaks.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} />))}
+      {streaksOrShortcutsArray.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} />))}
       <button className={`btn add-streak-btn ${visible}`} onClick={add}>+</button>
     </div>
   )
