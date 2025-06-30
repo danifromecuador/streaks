@@ -1,8 +1,7 @@
 .streaks {
+  aspect-ratio: 10 / 1;
   border: calc((1vw + 1vh)/10) solid #8fc9b9;
   border-radius: calc((1vw + 1vh)/1.5);
-  aspect-ratio: 10 / 1;
-  padding: 1vh 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +13,7 @@
   aspect-ratio: 1/1;
   border: none;
   border-radius: calc((1vw + 1vh)/3);
+  margin-top: -20px;
   font-size: calc((1vw + 1vh)/0.3);
   display: flex;
   justify-content: center;
@@ -22,6 +22,5 @@
 
 .streaks.shortcuts {
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(10, auto);
+  flex-wrap: wrap;
 }
