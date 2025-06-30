@@ -1,4 +1,5 @@
-.streaks {
+.streaks,
+.shortcuts {
   aspect-ratio: 10 / 1;
   border: calc((1vw + 1vh)/10) solid #8fc9b9;
   border-radius: calc((1vw + 1vh)/1.5);
@@ -8,7 +9,7 @@
   column-gap: 2vw;
 }
 
-.streaks .btn.add-streak-btn {
+.btn.add-streak-btn {
   width: 6vw;
   aspect-ratio: 1/1;
   border: none;
@@ -20,7 +21,7 @@
   align-items: center;
 }
 
-.streaks.shortcuts {
+.shortcuts {
   height: 100%;
   flex-wrap: wrap;
 }

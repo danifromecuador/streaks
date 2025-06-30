@@ -15,8 +15,8 @@ export const App = () => {
   return (
     <div className="app">
       <div className='main'>
-        <Streaks />
-        <Streaks className='shortcuts' />
+        <Streaks type='streaks' />
+        <Streaks type='shortcuts' />
         <CreateConfirmation />
         {store.streakIdToEdit && <EditConfirmation />}
         {store.streakIdToDelete && <DeleteConfirmation />}
