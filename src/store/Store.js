@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 import { addStreak, saveEditedStreak, deleteStreak } from './streaks'
-import { addShortcut } from './shortcuts'
+import { addShortcut, saveEditedShortcut } from './shortcuts'
 
 export const Store = create(devtools(set => ({
   visible1: true, // show or hide config main menu
@@ -22,7 +22,10 @@ export const Store = create(devtools(set => ({
   setStreakIdToDelete: id => set({ streakIdToDelete: id }, undefined, 'setStreakIdToDelete'),
   deleteStreak: () => deleteStreak(set),
 
-  //shortcuts operations
+  // shortcuts operations
   shortcuts: JSON.parse(localStorage.getItem("shortcuts")) || [],
   addShortcut: data => addShortcut(data, set),
+  shortcutIdToEdit: null,
+  setShortcutIdToEdit: id => set({ shortcutIdToEdit: id }, undefined, 'setShortcutIdToEdit'),
+  saveEditedShortcut: name => saveEditedShortcut(name, set),
 })))
