@@ -4,17 +4,21 @@ import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import { Store } from '../../store/Store'
 import './Streak.css'
 
-export const Streak = ({ id, name, image, url }) => {
+export const Streak = ({ id, name, image, url, type }) => {
   const store = Store()
   const [visible, setVisible] = useState('hide')
 
   const editStreak = () => {
-    // here we aren't editing the streak, just setting the id to the streak that is going to be edited
-    // real edition of that streak takes place on edit confirmation dialog
+    // here we aren't editing, just setting the id to the streak or shortcut that is going to be edited
+    // real edition takes place on edit confirmation dialog
+    // show edit dialog and hide other dialogs
     store.visible2 && store.toggleVisible2()
-    // show edit streak dialog and hide other dialogs
-    store.setStreakIdToEdit(id)
+    store.setStreakIdToEdit(null)
     store.setStreakIdToDelete(null)
+    store.setShortcutIdToEdit(null)
+    // TODO store.setShortcutIdToDelete(null)
+    if (type === 'streaks') store.setStreakIdToEdit(id)
+    if (type === 'shortcuts') store.setShortcutIdToEdit(id)
   }
 
   const deleteStreak = () => {

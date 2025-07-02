@@ -22,7 +22,7 @@ export const Streaks = ({ type }) => {
 
   return (
     <div className={type} >
-      {streaksOrShortcutsArray.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} />))}
+      {streaksOrShortcutsArray.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} type={type} />))}
       <button className={`btn add-streak-btn ${visible}`} onClick={add}>+</button>
     </div>
   )
