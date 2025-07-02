@@ -5,11 +5,15 @@ import './Confirmations.css'
 
 export const EditConfirmation = () => {
   const store = Store()
-  const streakToEdit = store.streaks.find(streak => streak.id === store.streakIdToEdit)
-  const [name, setName] = useState(streakToEdit.name)
+  const streakOrShortcutToEdit = store.streaks.find(streak => streak.id === store.streakIdToEdit) ||
+    store.shortcuts.find(shortcut => shortcut.id === store.shortcutIdToEdit)
+  let streakOrShortcut = ''
+  if (store.streakIdToEdit) streakOrShortcut = 'streak'
+  if (store.shortcutIdToEdit) streakOrShortcut = 'shortcut'
+  const [name, setName] = useState(streakOrShortcutToEdit.name)
   const [nameAlert, setNameAlert] = useState("")
 
-  const validateStreak = () => {
+  const validate = () => {
     setNameAlert("")
     if (!name.trim()) {
       setNameAlert("Enter a name")
@@ -18,23 +22,34 @@ export const EditConfirmation = () => {
     return true
   }
 
-  const saveEditedStreak = () => {
-    if (validateStreak()) {
-      store.saveEditedStreak(name.trim())
-      localStorage.setItem("streaks", JSON.stringify(store.streaks))
+  const saveEdited = () => {
+    if (validate()) {
+      if (streakOrShortcut === 'streak') {
+        store.saveEditedStreak(name.trim())
+        localStorage.setItem("streaks", JSON.stringify(store.streaks))
+      }
+      if (streakOrShortcut === 'shortcut') {
+        store.saveEditedShortcut(name.trim())
+        localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts))
+      }
     }
+  }
+
+  const closeBtn = () => {
+    store.setStreakIdToEdit(null)
+    store.setShortcutIdToEdit(null)
   }
 
   return (
     <div className={`confirmations`}>
-      <h2>Edit {streakToEdit.name} Streak</h2>
-      <button className='btn close-btn' onClick={() => store.setStreakIdToEdit(null)}><CloseIcon /></button>
+      <h2>Edit {streakOrShortcut} {streakOrShortcutToEdit.name}</h2>
+      <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={e => setName(e.target.value)} />
         <span className='warning'>{nameAlert}</span>
       </div>
-      <button type="submit" className='btn create' onClick={saveEditedStreak}>SAVE</button>
+      <button type="submit" className='btn create' onClick={saveEdited}>SAVE</button>
     </div>
   )
 }
