@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Confirmations.css'
@@ -13,7 +13,7 @@ export const CreateConfirmation = () => {
   const eraseData = () => (setName(""), setUrl(""))
   const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
-  const validateStreak = () => {
+  const validate = () => {
     eraseAlerts()
     if (!name.trim()) {
       setNameAlert("Enter a name")
@@ -27,15 +27,21 @@ export const CreateConfirmation = () => {
   }
 
   const add = () => {
-    if (validateStreak()) {
+    if (validate()) {
       const data = {
         id: Date.now(),
         name: name.trim(),
         image: `https://icons.duckduckgo.com/ip3/${url.split(".")[1]}.com.ico`,
         url: url.trim()
       }
-      store.streakOrShortcut === 'streak' && store.addStreak(data)
-      store.streakOrShortcut === 'shortcut' && store.addShortcut(data)
+      if (store.streakOrShortcut === 'streak') {
+        store.addStreak(data)
+        localStorage.setItem("streaks", JSON.stringify(store.streaks))
+      }
+      if (store.streakOrShortcut === 'shortcut') {
+        store.addShortcut(data)
+        localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts))
+      }
       eraseData()
       eraseAlerts()
       store.toggleVisible2()
@@ -47,9 +53,6 @@ export const CreateConfirmation = () => {
     eraseData()
     eraseAlerts()
   }
-
-  useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
-  useEffect(() => localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts)), [store.shortcuts])
 
   return (
     <div className={`confirmations ${visibility}`}>
