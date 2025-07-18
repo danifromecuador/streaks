@@ -1,10 +1,10 @@
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from '@mui/icons-material/Settings'
 import { Store } from './store/Store'
 import { Config } from './components/config/Config'
 import { Streaks } from './components/streaks/Streaks'
 import { CreateConfirmation } from './components/confirmations/CreateConfirmation'
 import { EditConfirmation } from './components/confirmations/EditConfirmation'
-import { DeleteConfirmation } from './components/confirmations/DeleteConfirmation';
+import { DeleteConfirmation } from './components/confirmations/DeleteConfirmation'
 import './App.css'
 
 

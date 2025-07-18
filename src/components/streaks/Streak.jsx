@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutline';
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/DeleteOutline'
 import { Store } from '../../store/Store'
 import './Streak.css'
 
