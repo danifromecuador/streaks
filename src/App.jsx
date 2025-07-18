@@ -19,7 +19,7 @@ export const App = () => {
         <Streaks type='shortcuts' />
         <CreateConfirmation />
         {(store.streakIdToEdit || store.shortcutIdToEdit) && <EditConfirmation />}
-        {store.streakIdToDelete && <DeleteConfirmation />}
+        {(store.streakIdToDelete || store.shortcutIdToDelete) && <DeleteConfirmation />}
       </div>
       <Config />
       <button
