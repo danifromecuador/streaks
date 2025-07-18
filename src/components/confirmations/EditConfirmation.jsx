@@ -35,18 +35,22 @@ export const EditConfirmation = () => {
     }
   }
 
+  const enterKey = event => {
+    if (event.key === 'Enter') saveEdited()
+  }
+
   const closeBtn = () => {
     store.setStreakIdToEdit(null)
     store.setShortcutIdToEdit(null)
   }
 
   return (
-    <div className={`confirmations`}>
+    <div className={`confirmations`} onKeyDown={enterKey}>
       <h2>Edit {streakOrShortcut} {streakOrShortcutToEdit.name}</h2>
       <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
         <p>name</p>
-        <input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <input type="text" value={name} autoFocus onChange={e => setName(e.target.value)} />
         <span className='warning'>{nameAlert}</span>
       </div>
       <button type="submit" className='btn create' onClick={saveEdited}>SAVE</button>
