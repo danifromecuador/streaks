@@ -20,6 +20,11 @@ export const Streaks = ({ type }) => {
     if (type === 'shortcuts') { setVisible(`${streaksOrShortcutsArray.length < 44 ? '' : 'hide'}`) }
   }, [type, streaksOrShortcutsArray.length])
 
+  useEffect(() => {
+    localStorage.setItem("streaks", JSON.stringify(store.streaks))
+    localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts))
+  }, [store.streaks, store.shortcuts])
+
   return (
     <div className={type} >
       {streaksOrShortcutsArray.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} type={type} />))}
