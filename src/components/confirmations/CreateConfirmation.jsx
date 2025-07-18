@@ -48,6 +48,10 @@ export const CreateConfirmation = () => {
     }
   }
 
+  const enterKey = event => {
+    if (event.key === 'Enter') add()
+  }
+
   const closeBtn = () => {
     store.toggleVisible2()
     eraseData()
@@ -55,7 +59,7 @@ export const CreateConfirmation = () => {
   }
 
   return (
-    <div className={`confirmations ${visibility}`}>
+    <div className={`confirmations ${visibility}`} onKeyDown={event => enterKey(event)}>
       <h2>Create new {store.streakOrShortcut}</h2>
       <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
