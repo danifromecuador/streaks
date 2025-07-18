@@ -14,3 +14,12 @@ export const saveEditedShortcut = (name, set) => {
     })
   }, undefined, 'saveEditedShortcut')
 }
+
+export const deleteShortcut = (set) => {
+  set(state => {
+    const newShortcutsArray = state.shortcuts.filter(obj => obj.id !== state.shortcutIdToDelete)
+    return ({
+      shortcuts: newShortcutsArray, shortcutIdToDelete: null
+    })
+  }, undefined, 'deleteShortcut')
+}

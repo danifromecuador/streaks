@@ -10,14 +10,14 @@ export const DeleteConfirmation = () => {
   if (store.streakIdToDelete) streakOrShortcut = 'streak'
   if (store.shortcutIdToDelete) streakOrShortcut = 'shortcut'
 
-  const closeBtn = () => {
-    store.setStreakIdToDelete(null)
-    store.setShortcutIdToDelete(null)
-  }
-
   const deleteBtn = () => {
     if (store.streakIdToDelete) store.deleteStreak()
     if (store.shortcutIdToDelete) store.deleteShortcut()
+  }
+
+  const closeBtn = () => {
+    store.setStreakIdToDelete(null)
+    store.setShortcutIdToDelete(null)
   }
 
   return (
