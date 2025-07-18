@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Store } from '../../store/Store'
 import './Confirmations.css'
@@ -10,6 +10,8 @@ export const CreateConfirmation = () => {
   const [url, setUrl] = useState("")
   const [nameAlert, setNameAlert] = useState("")
   const [urlAlert, setUrlAlert] = useState("")
+  const nameInputRef = useRef(null)
+
   const eraseData = () => (setName(""), setUrl(""))
   const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
@@ -58,13 +60,17 @@ export const CreateConfirmation = () => {
     eraseAlerts()
   }
 
+  useEffect(() => {
+    if (store.visible2 && nameInputRef.current) nameInputRef.current.focus()
+  }, [store.visible2])
+
   return (
-    <div className={`confirmations ${visibility}`} onKeyDown={event => enterKey(event)}>
+    <div className={`confirmations ${visibility}`} onKeyDown={enterKey}>
       <h2>Create new {store.streakOrShortcut}</h2>
       <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
         <p>name</p>
-        <input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <input type="text" value={name} ref={nameInputRef} onChange={e => setName(e.target.value)} />
         <span className='warning'>{nameAlert}</span>
       </div>
       <div>
