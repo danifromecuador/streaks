@@ -33,7 +33,8 @@ export const CreateConfirmation = () => {
       const data = {
         id: Date.now(),
         name: name.trim(),
-        image: `https://icons.duckduckgo.com/ip3/${url.split(".")[1]}.com.ico`,
+        // image: `https://icons.duckduckgo.com/ip3/${url.split(".")[1]}.com.ico`,
+        image: `https://images.weserv.nl/?url=logo.clearbit.com/${url.split(".")[1]}.com`,
         url: url.trim()
       }
       if (store.streakOrShortcut === 'streak') {
