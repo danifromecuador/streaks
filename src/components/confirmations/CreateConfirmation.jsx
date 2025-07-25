@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import CloseIcon from '@mui/icons-material/Close';
+import { useState, useRef, useEffect } from 'react'
+import CloseIcon from '@mui/icons-material/Close'
 import { Store } from '../../store/Store'
 import './Confirmations.css'
 
@@ -10,10 +10,12 @@ export const CreateConfirmation = () => {
   const [url, setUrl] = useState("")
   const [nameAlert, setNameAlert] = useState("")
   const [urlAlert, setUrlAlert] = useState("")
+  const nameInputRef = useRef(null)
+
   const eraseData = () => (setName(""), setUrl(""))
   const eraseAlerts = () => (setNameAlert(""), setUrlAlert(""))
 
-  const validateStreak = () => {
+  const validate = () => {
     eraseAlerts()
     if (!name.trim()) {
       setNameAlert("Enter a name")
@@ -26,16 +28,30 @@ export const CreateConfirmation = () => {
     return true
   }
 
-  const addStreak = () => {
-    if (validateStreak()) {
-      const urlDomain = url.split(".")[1]
-      const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
-      const id = Date.now()
-      store.addStreak({ id: id, name: name.trim(), image: getDomainIcon, url: url })
+  const add = () => {
+    if (validate()) {
+      const data = {
+        id: Date.now(),
+        name: name.trim(),
+        image: `https://icons.duckduckgo.com/ip3/${url.split(".")[1]}.com.ico`,
+        url: url.trim()
+      }
+      if (store.streakOrShortcut === 'streak') {
+        store.addStreak(data)
+        localStorage.setItem("streaks", JSON.stringify(store.streaks))
+      }
+      if (store.streakOrShortcut === 'shortcut') {
+        store.addShortcut(data)
+        localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts))
+      }
       eraseData()
       eraseAlerts()
       store.toggleVisible2()
     }
+  }
+
+  const enterKey = event => {
+    if (event.key === 'Enter') add()
   }
 
   const closeBtn = () => {
@@ -44,15 +60,17 @@ export const CreateConfirmation = () => {
     eraseAlerts()
   }
 
-  useEffect(() => localStorage.setItem("streaks", JSON.stringify(store.streaks)), [store.streaks])
+  useEffect(() => {
+    if (store.visible2 && nameInputRef.current) nameInputRef.current.focus()
+  }, [store.visible2])
 
   return (
-    <div className={`confirmations ${visibility}`}>
-      <h2>Create new Streak</h2>
+    <div className={`confirmations ${visibility}`} onKeyDown={enterKey}>
+      <h2>Create new {store.streakOrShortcut}</h2>
       <button className='btn close-btn' onClick={closeBtn}><CloseIcon /></button>
       <div>
         <p>name</p>
-        <input type="text" value={name} onChange={e => setName(e.target.value)} />
+        <input type="text" value={name} ref={nameInputRef} onChange={e => setName(e.target.value)} />
         <span className='warning'>{nameAlert}</span>
       </div>
       <div>
@@ -60,7 +78,7 @@ export const CreateConfirmation = () => {
         <input type="text" value={url} onChange={(e => setUrl(e.target.value))} />
         <span className='warning'>{urlAlert}</span>
       </div>
-      <button type="submit" className='btn create' onClick={addStreak}>CREATE</button>
+      <button type="submit" className='btn create' onClick={add}>CREATE</button>
     </div >
   )
 }

@@ -1,7 +1,7 @@
 export const addStreak = (data, set) => {
   set(state => ({
     streaks: [...state.streaks, data]
-  }), undefined, 'toggleVisible1')
+  }), undefined, 'addStreak')
 }
 
 export const saveEditedStreak = (name, set) => {
