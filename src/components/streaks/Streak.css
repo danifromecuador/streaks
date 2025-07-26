@@ -1,6 +1,5 @@
 .streak {
-  width: 6vw;
-  aspect-ratio: 10 / 13;
+  width: 5vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
