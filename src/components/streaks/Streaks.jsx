@@ -16,8 +16,8 @@ export const Streaks = ({ type }) => {
   }
 
   useEffect(() => {
-    if (type === 'streaks') { setVisible(`${streaksOrShortcutsArray.length < 11 ? '' : 'hide'}`) }
-    if (type === 'shortcuts') { setVisible(`${streaksOrShortcutsArray.length < 44 ? '' : 'hide'}`) }
+    if (type === 'streaks') { setVisible(`${streaksOrShortcutsArray.length < 10 ? '' : 'hide'}`) }
+    if (type === 'shortcuts') { setVisible(`${streaksOrShortcutsArray.length < 40 ? '' : 'hide'}`) }
   }, [type, streaksOrShortcutsArray.length])
 
   useEffect(() => {
@@ -28,7 +28,10 @@ export const Streaks = ({ type }) => {
   return (
     <div className={type} >
       {streaksOrShortcutsArray.map(e => (<Streak key={e.id} id={e.id} name={e.name} image={e.image} url={e.url} type={type} />))}
-      <button className={`btn add-streak-btn ${visible}`} onClick={add}>+</button>
+      <div className={`${visible} streak`}>
+        <button className={`btn add-streak-btn ${visible}`} onClick={add}>+</button>
+        <span className='invisible-filler'>Invisible filler</span>
+      </div>
     </div>
   )
 }
