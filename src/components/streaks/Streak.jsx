@@ -36,7 +36,7 @@ export const Streak = ({ id, name, image, url, type }) => {
 
   return (
     <div className='streak' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')}>
-      <a className='streak-container' href={url} target="_blank" rel='noopener noreferrer'>
+      <a className='streak-container' href={url}>
         <img className='streak-bg' src={image} alt={name}
           onError={e => {
             const domain = new URL(url).hostname
