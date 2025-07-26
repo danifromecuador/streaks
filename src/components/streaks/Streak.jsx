@@ -36,8 +36,14 @@ export const Streak = ({ id, name, image, url, type }) => {
 
   return (
     <div className='streak' onMouseEnter={() => setVisible('')} onMouseLeave={() => setVisible('hide')}>
-      <a className='streak-container' href={url} target="_blank" rel='noopener noreferrer'>
-        <img className='streak-bg' src={image} alt={name} />
+      <a className='streak-container' href={url}>
+        <img className='streak-bg' src={image} alt={name}
+          onError={e => {
+            const domain = new URL(url).hostname
+            e.target.onerror = null
+            e.target.src = `https://icons.duckduckgo.com/ip3/${domain}.ico`
+          }}
+        />
       </a>
       <button className={`btn streak-edit-btn ${visible}`} onClick={edit}><EditIcon sx={{ fontSize: '1.5vw' }} /></button>
       <button className={`btn streak-delete-btn ${visible}`} onClick={deleteFn}><DeleteIcon sx={{ fontSize: '1.5vw' }} /></button>

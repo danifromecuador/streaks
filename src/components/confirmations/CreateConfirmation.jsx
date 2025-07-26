@@ -25,15 +25,23 @@ export const CreateConfirmation = () => {
       setUrlAlert("Enter a URL")
       return false
     }
+    try {
+      new URL(url).hostname
+    }
+    catch {
+      setUrlAlert("Invalid URL format (copy and paste from the address bar)")
+      return false
+    }
     return true
   }
 
   const add = () => {
     if (validate()) {
+      const domain = new URL(url.trim()).hostname
       const data = {
         id: Date.now(),
         name: name.trim(),
-        image: `https://icons.duckduckgo.com/ip3/${url.split(".")[1]}.com.ico`,
+        image: `https://images.weserv.nl/?url=logo.clearbit.com/${domain}`,
         url: url.trim()
       }
       if (store.streakOrShortcut === 'streak') {
