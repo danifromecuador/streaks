@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { Store } from '../../store/Store'
 import './Confirmations.css'
@@ -14,6 +14,11 @@ export const EditConfirmation = () => {
   const [url, setUrl] = useState(streakOrShortcutToEdit.url)
   const [nameAlert, setNameAlert] = useState("")
   const [urlAlert, setUrlAlert] = useState("")
+
+  useEffect(() => {
+    setName(streakOrShortcutToEdit.name)
+    setUrl(streakOrShortcutToEdit.url)
+  }, [streakOrShortcutToEdit])
 
   const validate = () => {
     setNameAlert("")
