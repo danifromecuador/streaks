@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { Store } from '../../store/Store'
 import './Confirmations.css'
@@ -11,12 +11,30 @@ export const EditConfirmation = () => {
   if (store.streakIdToEdit) streakOrShortcut = 'streak'
   if (store.shortcutIdToEdit) streakOrShortcut = 'shortcut'
   const [name, setName] = useState(streakOrShortcutToEdit.name)
+  const [url, setUrl] = useState(streakOrShortcutToEdit.url)
   const [nameAlert, setNameAlert] = useState("")
+  const [urlAlert, setUrlAlert] = useState("")
+
+  useEffect(() => {
+    setName(streakOrShortcutToEdit.name)
+    setUrl(streakOrShortcutToEdit.url)
+  }, [streakOrShortcutToEdit])
 
   const validate = () => {
     setNameAlert("")
     if (!name.trim()) {
       setNameAlert("Enter a name")
+      return false
+    }
+    if (!url.trim()) {
+      setUrlAlert("Enter a URL")
+      return false
+    }
+    try {
+      new URL(url).hostname
+    }
+    catch {
+      setUrlAlert("Invalid URL format (copy and paste from the address bar)")
       return false
     }
     return true
@@ -29,7 +47,13 @@ export const EditConfirmation = () => {
         localStorage.setItem("streaks", JSON.stringify(store.streaks))
       }
       if (streakOrShortcut === 'shortcut') {
-        store.saveEditedShortcut(name.trim())
+        const domain = new URL(url.trim()).hostname
+        const data = {
+          name: name.trim(),
+          image: `https://images.weserv.nl/?url=logo.clearbit.com/${domain}`,
+          url: url.trim()
+        }
+        store.saveEditedShortcut(data)
         localStorage.setItem("shortcuts", JSON.stringify(store.shortcuts))
       }
     }
@@ -53,6 +77,11 @@ export const EditConfirmation = () => {
         <input type="text" value={name} autoFocus onChange={e => setName(e.target.value)} />
         <span className='warning'>{nameAlert}</span>
       </div>
+      {(streakOrShortcut === 'shortcut') && <div>
+        <p>url</p>
+        <input type="text" value={url} onChange={e => setUrl(e.target.value)} />
+        <span className='warning'>{urlAlert}</span>
+      </div>}
       <button type="submit" className='btn create' onClick={saveEdited}>SAVE</button>
     </div>
   )

@@ -27,7 +27,7 @@ export const Store = create(devtools(set => ({
   addShortcut: data => addShortcut(data, set),
   shortcutIdToEdit: null,
   setShortcutIdToEdit: id => set({ shortcutIdToEdit: id }, undefined, 'setShortcutIdToEdit'),
-  saveEditedShortcut: name => saveEditedShortcut(name, set),
+  saveEditedShortcut: data => saveEditedShortcut(data, set),
   shortcutIdToDelete: null,
   setShortcutIdToDelete: id => set({ shortcutIdToDelete: id }, undefined, 'setShortcutIdToDelete'),
   deleteShortcut: () => deleteShortcut(set),
