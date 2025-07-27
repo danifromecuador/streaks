@@ -4,11 +4,13 @@ export const addShortcut = (data, set) => {
   }), undefined, 'addShortcut')
 }
 
-export const saveEditedShortcut = (name, set) => {
+export const saveEditedShortcut = (data, set) => {
   set(state => {
     const newShortcutsArray = state.shortcuts
     const shortcutIndexToEdit = state.shortcuts.findIndex(shortcut => shortcut.id === state.shortcutIdToEdit)
-    newShortcutsArray[shortcutIndexToEdit].name = name
+    newShortcutsArray[shortcutIndexToEdit].name = data.name
+    newShortcutsArray[shortcutIndexToEdit].image = data.image
+    newShortcutsArray[shortcutIndexToEdit].url = data.url
     return ({
       shortcuts: newShortcutsArray, shortcutIdToEdit: null
     })
@@ -22,4 +24,4 @@ export const deleteShortcut = (set) => {
       shortcuts: newShortcutsArray, shortcutIdToDelete: null
     })
   }, undefined, 'deleteShortcut')
-}
+} 
