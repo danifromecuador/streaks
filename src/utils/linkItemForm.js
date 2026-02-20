@@ -1,10 +1,13 @@
-/** Build favicon URL from a page URL (e.g. for streaks/bookmarks). */
+/** Default icon when favicon cannot be resolved or image fails to load. */
+export const DEFAULT_LINK_ICON = '/default-link.svg'
+
+/** Build favicon URL from a page URL (e.g. for streaks/bookmarks). Returns DEFAULT_LINK_ICON when domain cannot be parsed. */
 export const getDomainIcon = (url) => {
   try {
     const part = url.trim().split('.')[1]
-    return part ? `https://icons.duckduckgo.com/ip3/${part}.com.ico` : ''
+    return part ? `https://icons.duckduckgo.com/ip3/${part}.com.ico` : DEFAULT_LINK_ICON
   } catch {
-    return ''
+    return DEFAULT_LINK_ICON
   }
 }
 
