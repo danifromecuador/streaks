@@ -3,6 +3,7 @@ import { useBookmarkStore } from '../store/bookmarks'
 import { LinkCard } from './LinkCard'
 import { CreateEditModal } from './modals/CreateEditModal'
 import { DeleteConfirmation } from './modals/DeleteConfirmation'
+import { cn, classes } from '../classes'
 
 export const Bookmarks = () => {
   const store = useBookmarkStore()
@@ -25,26 +26,12 @@ export const Bookmarks = () => {
   }, [store.bookmarks])
 
   return (
-    <div
-      className="w-full h-full border border-[calc((1vw+1vh)/10)] border-[#8fc9b9] rounded-[calc((1vw+1vh)/1.5)] flex justify-center items-center relative"
-      onMouseEnter={() => setAddVisible('')}
-      onMouseLeave={() => setAddVisible('hidden')}
-    >
-      <div className="w-fit relative flex flex-wrap items-center justify-center gap-[2vw] p-4">
+    <div className={classes.sectionFull} onMouseEnter={() => setAddVisible('')} onMouseLeave={() => setAddVisible('hidden')}>
+      <div className={classes.sectionListWrap}>
         {bookmarks.map((b, k) => (
-          <LinkCard
-            key={k}
-            name={b.name}
-            image={b.image}
-            url={b.url}
-            onDelete={() => handleDelete(b.name)}
-          />
+          <LinkCard key={k} name={b.name} image={b.image} url={b.url} onDelete={() => handleDelete(b.name)} />
         ))}
-        <button
-          type="button"
-          className={`btn cursor-pointer w-[4vw] aspect-square border-none rounded-[calc((1vw+1vh)/3)] text-[calc((1vw+1vh)/0.5)] flex justify-center items-center ${addVisible}`}
-          onClick={openCreate}
-        >
+        <button type="button" className={cn(classes.addBtnInline, addVisible)} onClick={openCreate}>
           +
         </button>
       </div>

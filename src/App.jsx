@@ -3,22 +3,22 @@ import { useConfigStore } from './store/config'
 import { Config } from './components/Config'
 import { Bookmarks } from './components/Bookmarks'
 import { Streaks } from './components/Streaks'
+import { cn, classes } from './classes'
 
 export const App = () => {
   const configOpen = useConfigStore(s => s.configOpen)
   const toggleConfig = useConfigStore(s => s.toggleConfig)
-  const visibility = configOpen ? 'hidden' : ''
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <div className="w-[90%] h-[90%] flex flex-col justify-between gap-[8vh]">
+    <div className={classes.app}>
+      <div className={classes.appMain}>
         <Streaks />
         <Bookmarks />
       </div>
       <Config />
       <button
         type="button"
-        className={`btn cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] bottom-[calc((1vw+1vh)/2)] flex justify-center items-center ${visibility}`}
+        className={cn(classes.configBtn, configOpen && 'hidden')}
         onClick={toggleConfig}
       >
         <SettingsIcon />
