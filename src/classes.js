@@ -24,11 +24,11 @@ export const classes = {
 
   // Streaks / Bookmarks sections
   section: `w-full aspect-[10/1] ${borderBox} flex justify-center items-center`,
-  sectionFull: `w-full h-full ${borderBox} flex justify-center items-center relative`,
-  sectionList: 'w-fit relative flex items-center gap-[2vw]',
-  sectionListWrap: 'w-fit relative flex flex-wrap items-center justify-center gap-[2vw] p-4',
-  addBtn: `btn cursor-pointer w-[4vw] aspect-square absolute right-[-7vw] border-none rounded-[${v(3)}] text-[${v(0.5)}] flex justify-center items-center`,
-  addBtnInline: `btn cursor-pointer w-[4vw] aspect-square border-none rounded-[${v(3)}] text-[${v(0.5)}] flex justify-center items-center`,
+  sectionFull: `w-full h-full ${borderBox} flex justify-center items-center`,
+  sectionList: 'w-fit flex items-center gap-[2vw]',
+  sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[2vw] p-4',
+  // Add button inline like a LinkCard (same size, no absolute)
+  addBtn: `btn cursor-pointer w-[6vw] aspect-[10/13] border-none rounded-[${v(3)}] flex justify-center items-center text-[${v(0.5)}]`,
 
   // Modals (overlay = fixed full-screen centering; modal = dialog box)
   modalOverlay: 'fixed inset-0 flex items-center justify-center z-10',

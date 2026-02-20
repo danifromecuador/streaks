@@ -15,7 +15,6 @@ export const LinkSection = ({ type }) => {
   const store = isStreak ? streakStore : bookmarkStore
   const items = isStreak ? store.streaks : store.bookmarks
 
-  const [addVisible, setAddVisible] = useState('hidden')
   const [modal, setModal] = useState(null) // null | 'create' | { delete: name }
 
   const closeModal = () => setModal(null)
@@ -32,14 +31,12 @@ export const LinkSection = ({ type }) => {
     closeModal()
   }
 
-  const showAddOnHover = () => setAddVisible(isStreak && items.length >= 10 ? 'hidden' : '')
-
+  const atMax = isStreak ? items.length >= 10 : items.length >= 40
   const sectionClass = isStreak ? classes.section : classes.sectionFull
   const listClass = isStreak ? classes.sectionList : classes.sectionListWrap
-  const addBtnClass = isStreak ? classes.addBtn : classes.addBtnInline
 
   return (
-    <div className={sectionClass} onMouseEnter={showAddOnHover} onMouseLeave={() => setAddVisible('hidden')}>
+    <div className={sectionClass}>
       <div className={listClass}>
         {items.map((item, k) => (
           <LinkCard
@@ -50,7 +47,7 @@ export const LinkSection = ({ type }) => {
             onDelete={() => setModal({ delete: item.name })}
           />
         ))}
-        <button type="button" className={cn(addBtnClass, addVisible)} onClick={() => setModal('create')}>
+        <button type="button" className={cn(classes.addBtn, atMax && 'hidden')} onClick={() => setModal('create')}>
           <AddIcon sx={{ fontSize: 'calc((1.5vw + 1.5vh)/1.5)' }} />
         </button>
       </div>
