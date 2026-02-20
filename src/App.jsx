@@ -1,8 +1,8 @@
 import SettingsIcon from '@mui/icons-material/Settings'
 import { useConfigStore } from './store/config'
-import { Config } from './components/config/Config'
-import { Bookmarks } from './components/bookmarks/Bookmarks'
-import { Streaks } from './components/streaks/Streaks'
+import { Config } from './components/Config'
+import { Bookmarks } from './components/Bookmarks'
+import { Streaks } from './components/Streaks'
 
 export const App = () => {
   const configOpen = useConfigStore(s => s.configOpen)

@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { useConfigStore } from '../../store/config'
+import { useConfigStore } from '../store/config'
 
 export const Config = () => {
   const configOpen = useConfigStore(s => s.configOpen)

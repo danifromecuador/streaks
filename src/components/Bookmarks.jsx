@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useBookmarkStore } from '../../store/bookmarks'
-import { Bookmark } from './Bookmark'
-import { CreateEditModal } from '../modals/CreateEditModal'
-import { DeleteConfirmation } from '../modals/DeleteConfirmation'
+import { useBookmarkStore } from '../store/bookmarks'
+import { LinkCard } from './LinkCard'
+import { CreateEditModal } from './modals/CreateEditModal'
+import { DeleteConfirmation } from './modals/DeleteConfirmation'
 
 export const Bookmarks = () => {
   const store = useBookmarkStore()
@@ -12,6 +12,12 @@ export const Bookmarks = () => {
   const openCreate = () => {
     store.toggleCreateModal()
     if (store.deleteModalOpen) store.toggleDeleteModal()
+  }
+
+  const handleDelete = (name) => {
+    store.setNameToDelete(name)
+    if (!store.deleteModalOpen) store.toggleDeleteModal()
+    if (store.createModalOpen) store.toggleCreateModal()
   }
 
   useEffect(() => {
@@ -26,7 +32,13 @@ export const Bookmarks = () => {
     >
       <div className="w-fit relative flex flex-wrap items-center justify-center gap-[2vw] p-4">
         {bookmarks.map((b, k) => (
-          <Bookmark name={b.name} image={b.image} url={b.url} key={k} />
+          <LinkCard
+            key={k}
+            name={b.name}
+            image={b.image}
+            url={b.url}
+            onDelete={() => handleDelete(b.name)}
+          />
         ))}
         <button
           type="button"

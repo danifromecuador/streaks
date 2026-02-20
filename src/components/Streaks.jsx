@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useStreakStore } from '../../store/streaks'
-import { Streak } from './Streak'
-import { CreateEditModal } from '../modals/CreateEditModal'
-import { DeleteConfirmation } from '../modals/DeleteConfirmation'
+import { useStreakStore } from '../store/streaks'
+import { LinkCard } from './LinkCard'
+import { CreateEditModal } from './modals/CreateEditModal'
+import { DeleteConfirmation } from './modals/DeleteConfirmation'
 
 export const Streaks = () => {
   const store = useStreakStore()
@@ -12,6 +12,12 @@ export const Streaks = () => {
   const openCreate = () => {
     store.toggleCreateModal()
     if (store.deleteModalOpen) store.toggleDeleteModal()
+  }
+
+  const handleDelete = (name) => {
+    store.setNameToDelete(name)
+    if (!store.deleteModalOpen) store.toggleDeleteModal()
+    if (store.createModalOpen) store.toggleCreateModal()
   }
 
   useEffect(() => {
@@ -26,7 +32,13 @@ export const Streaks = () => {
     >
       <div className="w-fit relative flex items-center gap-[2vw]">
         {streaks.map((e, k) => (
-          <Streak name={e.name} image={e.image} url={e.url} key={k} />
+          <LinkCard
+            key={k}
+            name={e.name}
+            image={e.image}
+            url={e.url}
+            onDelete={() => handleDelete(e.name)}
+          />
         ))}
         <button
           type="button"

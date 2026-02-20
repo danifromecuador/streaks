@@ -1,16 +1,8 @@
 import { useState } from 'react'
 import DeleteIcon from '@mui/icons-material/DeleteOutline'
-import { useBookmarkStore } from '../../store/bookmarks'
 
-export const Bookmark = ({ name, image, url }) => {
-  const store = useBookmarkStore()
+export const LinkCard = ({ name, image, url, onDelete }) => {
   const [visible, setVisible] = useState('hidden')
-
-  const onDelete = () => {
-    store.setNameToDelete(name)
-    if (!store.deleteModalOpen) store.toggleDeleteModal()
-    if (store.createModalOpen) store.toggleCreateModal()
-  }
 
   return (
     <div
