@@ -48,7 +48,7 @@ export const LinkSection = ({ type }) => {
           />
         ))}
         <button type="button" className={cn(classes.addBtn, atMax && 'hidden')} onClick={() => setModal('create')}>
-          <AddIcon sx={{ fontSize: 'calc((1.5vw + 1.5vh)/1.5)' }} />
+          <AddIcon sx={{ fontSize: 'calc((3vw + 3vh)/1)' }} />
         </button>
       </div>
       <CreateEditModal

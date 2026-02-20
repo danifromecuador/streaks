@@ -18,7 +18,7 @@ export const classes = {
   // LinkCard
   linkCard: 'w-[6vw] aspect-[10/13] flex flex-col justify-between items-center relative',
   linkCardLink: 'w-full flex justify-center items-center',
-  linkCardImg: `w-full aspect-square rounded-[${v(3)}]`,
+  linkCardImg: `w-full aspect-square rounded-[${v(3)}] bg-white`,
   linkCardDeleteBtn: 'btn cursor-pointer w-[25%] aspect-square absolute top-0 left-0 border-none flex justify-center items-center',
   linkCardLabel: 'w-[130%] text-center whitespace-nowrap overflow-hidden text-ellipsis text-[1vw]',
 
@@ -27,8 +27,7 @@ export const classes = {
   sectionFull: `w-full h-full ${borderBox} flex justify-center items-center`,
   sectionList: 'w-fit flex items-center gap-[2vw]',
   sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[2vw] p-4',
-  // Add button inline like a LinkCard (same size, no absolute)
-  addBtn: `btn cursor-pointer w-[6vw] aspect-[10/13] border-none rounded-[${v(3)}] flex justify-center items-center text-[${v(0.5)}]`,
+  addBtn: `btn cursor-pointer w-[6vw] aspect-square border-none rounded-[${v(3)}] bg-white text-black flex justify-center items-center self-start`,
 
   // Modals (overlay = fixed full-screen centering; modal = dialog box)
   modalOverlay: 'fixed inset-0 flex items-center justify-center z-10',
