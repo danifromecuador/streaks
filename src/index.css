@@ -1,16 +1,25 @@
-/* general styles */
-.hide {
-  display: none !important;
-}
+@import "tailwindcss";
 
-.btn,
-a {
-  cursor: pointer;
-}
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: calc((1vw + 1vh) / 1.5);
+  }
 
-button, input, input:active, input:focus {
-  border: calc((1vw + 1vh)/10) solid rgba(119, 119, 119, 0.5);
-  border-radius: calc((1vw + 1vh)/5);
-  outline: none;
-  padding: 0 0.3vw;
+  button,
+  input,
+  input:active,
+  input:focus {
+    border: calc((1vw + 1vh) / 10) solid rgba(119, 119, 119, 0.5);
+    border-radius: calc((1vw + 1vh) / 5);
+    outline: none;
+    padding: 0 0.3vw;
+  }
+
+  .btn,
+  a {
+    cursor: pointer;
+  }
 }
