@@ -18,12 +18,12 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
       </button>
       <div>
         <p>name</p>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" className={classes.modalInput} value={name} onChange={(e) => setName(e.target.value)} />
         <span className={classes.modalAlert}>{errors.name}</span>
       </div>
       <div>
         <p>url</p>
-        <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
+        <input type="text" className={classes.modalInput} value={url} onChange={(e) => setUrl(e.target.value)} />
         <span className={classes.modalAlert}>{errors.url}</span>
       </div>
       <button type="button" className={classes.modalSubmitBtn} onClick={submit}>
