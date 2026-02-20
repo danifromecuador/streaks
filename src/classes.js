@@ -18,8 +18,8 @@ export const classes = {
   // LinkCard
   linkCard: 'w-[6vw] aspect-[10/13] flex flex-col justify-between items-center relative',
   linkCardLink: 'w-full flex justify-center items-center',
-  linkCardImg: `w-full aspect-square rounded-[${v(3)}] bg-white`,
-  linkCardDeleteBtn: 'btn cursor-pointer w-[25%] aspect-square absolute top-0 left-0 border-none flex justify-center items-center',
+  linkCardImg: `w-full aspect-square rounded-[${v(3)}]`,
+  linkCardActionBtn: `btn cursor-pointer w-[25%] aspect-square absolute top-0 border-none rounded-[${v(3)}] bg-white flex justify-center items-center`,
   linkCardLabel: 'w-[130%] text-center whitespace-nowrap overflow-hidden text-ellipsis text-[1vw]',
 
   // Streaks / Bookmarks sections

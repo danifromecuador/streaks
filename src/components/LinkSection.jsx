@@ -15,14 +15,20 @@ export const LinkSection = ({ type }) => {
   const store = isStreak ? streakStore : bookmarkStore
   const items = isStreak ? store.streaks : store.bookmarks
 
-  const [modal, setModal] = useState(null) // null | 'create' | { delete: name }
+  const [modal, setModal] = useState(null) // null | 'create' | { delete: name } | { edit: item }
 
   const closeModal = () => setModal(null)
   const addItem = (item) => (isStreak ? streakStore.addStreak(item) : bookmarkStore.addBookmark(item))
+  const updateItem = (name, item) => (isStreak ? streakStore.updateStreak(name, item) : bookmarkStore.updateBookmark(name, item))
   const removeItem = (name) => (isStreak ? streakStore.deleteStreak(name) : bookmarkStore.deleteBookmark(name))
 
   const onCreateSubmit = (item) => {
     addItem(item)
+    closeModal()
+  }
+
+  const onEditSubmit = (item) => {
+    if (modal?.edit) updateItem(modal.edit.name, item)
     closeModal()
   }
 
@@ -45,6 +51,7 @@ export const LinkSection = ({ type }) => {
             image={item.image}
             url={item.url}
             onDelete={() => setModal({ delete: item.name })}
+            onEdit={() => setModal({ edit: item })}
           />
         ))}
         <button type="button" className={cn(classes.addBtn, atMax && 'hidden')} onClick={() => setModal('create')}>
@@ -52,11 +59,12 @@ export const LinkSection = ({ type }) => {
         </button>
       </div>
       <CreateEditModal
-        open={modal === 'create'}
+        open={modal === 'create' || Boolean(modal?.edit)}
         onClose={closeModal}
-        onSubmit={onCreateSubmit}
+        onSubmit={modal?.edit ? onEditSubmit : onCreateSubmit}
         type={type}
-        isEdit={false}
+        isEdit={Boolean(modal?.edit)}
+        initialItem={modal?.edit ?? null}
       />
       <DeleteConfirmation
         open={Boolean(modal?.delete)}

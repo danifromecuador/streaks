@@ -8,6 +8,9 @@ export const useBookmarkStore = create(
       set => ({
         bookmarks: [],
         addBookmark: data => set(state => ({ bookmarks: [...state.bookmarks, data] })),
+        updateBookmark: (name, data) => set(state => ({
+          bookmarks: state.bookmarks.map(b => b.name === name ? data : b),
+        })),
         deleteBookmark: name => set(state => ({ bookmarks: state.bookmarks.filter(b => b.name !== name) })),
       }),
       { name: 'bookmarks', partialize: state => ({ bookmarks: state.bookmarks }) }

@@ -3,9 +3,9 @@ import { cn, classes } from '../../classes'
 import { getTitle, getSubmitLabel } from './createEditModalLabels'
 import { useCreateEditForm } from '../../hooks/useCreateEditForm'
 
-/** Modal to create or edit a streak/bookmark. type: 'streak'|'bookmark', isEdit: boolean. onSubmit(item) is called with { name, image, url }. */
-export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false }) => {
-  const { name, url, errors, setName, setUrl, submit } = useCreateEditForm(onSubmit)
+/** Modal to create or edit a streak/bookmark. type: 'streak'|'bookmark', isEdit: boolean. initialItem for edit prefills form. onSubmit(item) is called with { name, image, url }. */
+export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false, initialItem = null }) => {
+  const { name, url, errors, setName, setUrl, submit } = useCreateEditForm(onSubmit, isEdit ? initialItem : null)
   const title = getTitle(type, isEdit)
   const submitLabel = getSubmitLabel(isEdit)
 
