@@ -1,44 +1,12 @@
-import { useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import { cn, classes } from '../../classes'
-
-const getDomainIcon = (url) => {
-  try {
-    const part = url.trim().split('.')[1]
-    return part ? `https://icons.duckduckgo.com/ip3/${part}.com.ico` : ''
-  } catch {
-    return ''
-  }
-}
-
-const INITIAL_ERRORS = { name: '', url: '' }
-
-const getTitle = (type, isEdit) => {
-  if (type === 'streak') return isEdit ? 'Edit streak' : 'Create streak'
-  return isEdit ? 'Edit bookmark' : 'Create bookmark'
-}
-
-const getSubmitLabel = (isEdit) => (isEdit ? 'SAVE' : 'CREATE')
+import { getTitle, getSubmitLabel } from './createEditModalLabels'
+import { useCreateEditForm } from '../../hooks/useCreateEditForm'
 
 export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false }) => {
+  const { name, url, errors, setName, setUrl, submit } = useCreateEditForm(onSubmit)
   const title = getTitle(type, isEdit)
   const submitLabel = getSubmitLabel(isEdit)
-  const [name, setName] = useState('')
-  const [url, setUrl] = useState('')
-  const [errors, setErrors] = useState(INITIAL_ERRORS)
-
-  const submit = () => {
-    const next = {
-      name: name.trim() ? '' : 'Enter a name',
-      url: url.trim() ? '' : 'Enter a URL',
-    }
-    setErrors(next)
-    if (next.name || next.url) return
-    onSubmit({ name: name.trim(), image: getDomainIcon(url), url: url.trim() })
-    setName('')
-    setUrl('')
-    setErrors(INITIAL_ERRORS)
-  }
 
   return (
     <div className={cn(classes.modal, !open && 'hidden')}>
