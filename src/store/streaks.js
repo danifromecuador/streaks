@@ -1,8 +1,12 @@
 import { create } from 'zustand'
-import { devtools } from 'zustand/middleware'
+import { devtools, persist } from 'zustand/middleware'
 
-export const useStreakStore = create(devtools(set => ({
-  streaks: JSON.parse(localStorage.getItem('streaks')) || [],
+export const useStreakStore = create(devtools(persist(set => ({
+  streaks: [],
   addStreak: data => set(state => ({ streaks: [...state.streaks, data] })),
   deleteStreak: name => set(state => ({ streaks: state.streaks.filter(s => s.name !== name) })),
-})))
+}),
+  { name: 'streaks', partialize: state => ({ streaks: state.streaks }) }
+)
+)
+)

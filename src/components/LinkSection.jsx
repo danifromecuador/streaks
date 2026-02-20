@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useStreakStore } from '../store/streaks'
 import { useBookmarkStore } from '../store/bookmarks'
 import { LinkCard } from './LinkCard'
@@ -12,7 +12,6 @@ export const LinkSection = ({ type }) => {
   const bookmarkStore = useBookmarkStore()
   const store = isStreak ? streakStore : bookmarkStore
   const items = isStreak ? store.streaks : store.bookmarks
-  const storageKey = isStreak ? 'streaks' : 'bookmarks'
 
   const [addVisible, setAddVisible] = useState('hidden')
   const [createOpen, setCreateOpen] = useState(false)
@@ -46,10 +45,6 @@ export const LinkSection = ({ type }) => {
     if (isStreak) setAddVisible(items.length < 10 ? '' : 'hidden')
     else setAddVisible('')
   }
-
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(items))
-  }, [storageKey, items])
 
   const sectionClass = isStreak ? classes.section : classes.sectionFull
   const listClass = isStreak ? classes.sectionList : classes.sectionListWrap
