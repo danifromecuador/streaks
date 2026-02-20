@@ -11,28 +11,25 @@ const getDomainIcon = (url) => {
   }
 }
 
-export const CreateEditModal = ({ open, onClose, onSubmit, mode }) => {
-  const isStreak = mode === 'streak'
+const INITIAL_ERRORS = { name: '', url: '' }
+
+export const CreateEditModal = ({ open, onClose, onSubmit, title, submitLabel }) => {
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')
-  const [nameAlert, setNameAlert] = useState('')
-  const [urlAlert, setUrlAlert] = useState('')
+  const [errors, setErrors] = useState(INITIAL_ERRORS)
 
   const submit = () => {
-    setNameAlert('')
-    setUrlAlert('')
-    if (!name.trim().length) setNameAlert('Enter a name')
-    if (!url.trim().length) setUrlAlert('Enter a URL')
-    if (name.trim().length && url.trim().length) {
-      const item = { name: name.trim(), image: getDomainIcon(url), url: url.trim() }
-      onSubmit(item)
-      setName('')
-      setUrl('')
+    const next = {
+      name: name.trim() ? '' : 'Enter a name',
+      url: url.trim() ? '' : 'Enter a URL',
     }
+    setErrors(next)
+    if (next.name || next.url) return
+    onSubmit({ name: name.trim(), image: getDomainIcon(url), url: url.trim() })
+    setName('')
+    setUrl('')
+    setErrors(INITIAL_ERRORS)
   }
-
-  const title = isStreak ? 'Create new Streak' : 'Add bookmark'
-  const submitLabel = isStreak ? 'CREATE' : 'ADD'
 
   return (
     <div className={cn(classes.modal, !open && 'hidden')}>
@@ -43,12 +40,12 @@ export const CreateEditModal = ({ open, onClose, onSubmit, mode }) => {
       <div>
         <p>name</p>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <span className={classes.modalAlert}>{nameAlert}</span>
+        <span className={classes.modalAlert}>{errors.name}</span>
       </div>
       <div>
         <p>url</p>
         <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} />
-        <span className={classes.modalAlert}>{urlAlert}</span>
+        <span className={classes.modalAlert}>{errors.url}</span>
       </div>
       <button type="button" className={classes.modalSubmitBtn} onClick={submit}>
         {submitLabel}

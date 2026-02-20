@@ -14,37 +14,23 @@ export const LinkSection = ({ type }) => {
   const items = isStreak ? store.streaks : store.bookmarks
 
   const [addVisible, setAddVisible] = useState('hidden')
-  const [createOpen, setCreateOpen] = useState(false)
-  const [deleteOpen, setDeleteOpen] = useState(false)
-  const [nameToDelete, setNameToDelete] = useState('')
+  const [modal, setModal] = useState(null) // null | 'create' | { delete: name }
 
-  const openCreate = () => {
-    setCreateOpen(true)
-    setDeleteOpen(false)
+  const closeModal = () => setModal(null)
+  const addItem = (item) => (isStreak ? streakStore.addStreak(item) : bookmarkStore.addBookmark(item))
+  const removeItem = (name) => (isStreak ? streakStore.deleteStreak(name) : bookmarkStore.deleteBookmark(name))
+
+  const onCreateSubmit = (item) => {
+    addItem(item)
+    closeModal()
   }
 
-  const handleDelete = (name) => {
-    setNameToDelete(name)
-    setDeleteOpen(true)
-    setCreateOpen(false)
+  const onDeleteConfirm = () => {
+    if (modal?.delete) removeItem(modal.delete)
+    closeModal()
   }
 
-  const handleCreateSubmit = (item) => {
-    if (isStreak) streakStore.addStreak(item)
-    else bookmarkStore.addBookmark(item)
-    setCreateOpen(false)
-  }
-
-  const handleDeleteConfirm = () => {
-    if (isStreak) streakStore.deleteStreak(nameToDelete)
-    else bookmarkStore.deleteBookmark(nameToDelete)
-    setDeleteOpen(false)
-  }
-
-  const showAddOnHover = () => {
-    if (isStreak) setAddVisible(items.length < 10 ? '' : 'hidden')
-    else setAddVisible('')
-  }
+  const showAddOnHover = () => setAddVisible(isStreak && items.length >= 10 ? 'hidden' : '')
 
   const sectionClass = isStreak ? classes.section : classes.sectionFull
   const listClass = isStreak ? classes.sectionList : classes.sectionListWrap
@@ -59,24 +45,25 @@ export const LinkSection = ({ type }) => {
             name={item.name}
             image={item.image}
             url={item.url}
-            onDelete={() => handleDelete(item.name)}
+            onDelete={() => setModal({ delete: item.name })}
           />
         ))}
-        <button type="button" className={cn(addBtnClass, addVisible)} onClick={openCreate}>
+        <button type="button" className={cn(addBtnClass, addVisible)} onClick={() => setModal('create')}>
           +
         </button>
       </div>
       <CreateEditModal
-        open={createOpen}
-        onClose={() => setCreateOpen(false)}
-        onSubmit={handleCreateSubmit}
-        mode={type}
+        open={modal === 'create'}
+        onClose={closeModal}
+        onSubmit={onCreateSubmit}
+        title={isStreak ? 'Create new Streak' : 'Add bookmark'}
+        submitLabel={isStreak ? 'CREATE' : 'ADD'}
       />
       <DeleteConfirmation
-        open={deleteOpen}
-        onClose={() => setDeleteOpen(false)}
-        nameToDelete={nameToDelete}
-        onConfirm={handleDeleteConfirm}
+        open={Boolean(modal?.delete)}
+        onClose={closeModal}
+        nameToDelete={modal?.delete ?? ''}
+        onConfirm={onDeleteConfirm}
         type={type}
       />
     </div>
