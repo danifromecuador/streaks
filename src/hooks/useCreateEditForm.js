@@ -4,6 +4,7 @@ import { validateForm } from '../utils/linkItemForm'
 
 const INITIAL_ERRORS = { name: '', url: '' }
 
+/** Form state and submit handler for create/edit modal. Validates name and url, then calls onSubmit({ name, image, url }) and resets. */
 export const useCreateEditForm = (onSubmit) => {
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')

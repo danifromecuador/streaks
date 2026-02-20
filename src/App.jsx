@@ -4,6 +4,7 @@ import { Config } from './components/Config'
 import { LinkSection } from './components/LinkSection'
 import { cn, classes } from './classes'
 
+/** Root layout: streaks section, bookmarks section, config panel, and settings button. */
 export const App = () => {
   const [configOpen, setConfigOpen] = useState(true)
 

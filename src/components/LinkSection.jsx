@@ -6,6 +6,7 @@ import { CreateEditModal } from './modals/CreateEditModal'
 import { DeleteConfirmation } from './modals/DeleteConfirmation'
 import { cn, classes } from '../classes'
 
+/** Renders a list of link items (streaks or bookmarks), add button, and create/delete modals. Type is 'streak' or 'bookmark'. */
 export const LinkSection = ({ type }) => {
   const isStreak = type === 'streak'
   const streakStore = useStreakStore()

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import DeleteIcon from '@mui/icons-material/DeleteOutline'
 import { cn, classes } from '../classes'
 
+/** Single link tile: image, label, external link. Shows delete button on hover; onDelete is called when it is clicked. */
 export const LinkCard = ({ name, image, url, onDelete }) => {
   const [visible, setVisible] = useState('hidden')
 
