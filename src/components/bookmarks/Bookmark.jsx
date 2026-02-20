@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import DeleteIcon from '@mui/icons-material/DeleteOutline'
-import { useStreakStore } from '../../store/streaks'
+import { useBookmarkStore } from '../../store/bookmarks'
 
-export const Streak = ({ name, image, url }) => {
-  const store = useStreakStore()
+export const Bookmark = ({ name, image, url }) => {
+  const store = useBookmarkStore()
   const [visible, setVisible] = useState('hidden')
 
   const onDelete = () => {
