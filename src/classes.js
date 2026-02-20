@@ -30,8 +30,9 @@ export const classes = {
   addBtn: `btn cursor-pointer w-[4vw] aspect-square absolute right-[-7vw] border-none rounded-[${v(3)}] text-[${v(0.5)}] flex justify-center items-center`,
   addBtnInline: `btn cursor-pointer w-[4vw] aspect-square border-none rounded-[${v(3)}] text-[${v(0.5)}] flex justify-center items-center`,
 
-  // Modals
-  modal: `w-fit h-fit p-[${v(0.5)}] rounded-[${v(3)}] relative mx-auto bg-[#171f25] flex flex-col gap-[1vw]`,
+  // Modals (overlay = fixed full-screen centering; modal = dialog box)
+  modalOverlay: 'fixed inset-0 flex items-center justify-center z-10',
+  modal: `w-fit h-fit p-[${v(0.5)}] rounded-[${v(3)}] relative bg-[#171f25] flex flex-col gap-[1vw]`,
   modalCloseBtn: `btn cursor-pointer w-[2vw] aspect-square absolute top-[${v(3)}] right-[${v(3)}] flex justify-center items-center`,
   modalAlert: 'text-[#c90a02] ml-[1vw]',
   modalActions: 'flex gap-[1vw]',

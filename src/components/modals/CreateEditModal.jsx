@@ -10,7 +10,8 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false 
   const submitLabel = getSubmitLabel(isEdit)
 
   return (
-    <div className={cn(classes.modal, !open && 'hidden')}>
+    <div className={cn(classes.modalOverlay, !open && 'hidden')}>
+      <div className={classes.modal}>
       <h2>{title}</h2>
       <button type="button" className={classes.modalCloseBtn} onClick={onClose}>
         <CloseIcon />
@@ -28,6 +29,7 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false 
       <button type="button" className={classes.modalSubmitBtn} onClick={submit}>
         {submitLabel}
       </button>
+      </div>
     </div>
   )
 }
