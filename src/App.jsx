@@ -1,8 +1,7 @@
 import SettingsIcon from '@mui/icons-material/Settings'
 import { useConfigStore } from './store/config'
 import { Config } from './components/Config'
-import { Bookmarks } from './components/Bookmarks'
-import { Streaks } from './components/Streaks'
+import { LinkSection } from './components/LinkSection'
 import { cn, classes } from './classes'
 
 export const App = () => {
@@ -12,8 +11,8 @@ export const App = () => {
   return (
     <div className={classes.app}>
       <div className={classes.appMain}>
-        <Streaks />
-        <Bookmarks />
+        <LinkSection type="streak" />
+        <LinkSection type="bookmark" />
       </div>
       <Config />
       <button
