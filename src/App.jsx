@@ -1,12 +1,11 @@
+import { useState } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { useConfigStore } from './store/config'
 import { Config } from './components/Config'
 import { LinkSection } from './components/LinkSection'
 import { cn, classes } from './classes'
 
 export const App = () => {
-  const configOpen = useConfigStore(s => s.configOpen)
-  const toggleConfig = useConfigStore(s => s.toggleConfig)
+  const [configOpen, setConfigOpen] = useState(true)
 
   return (
     <div className={classes.app}>
@@ -14,11 +13,11 @@ export const App = () => {
         <LinkSection type="streak" />
         <LinkSection type="bookmark" />
       </div>
-      <Config />
+      <Config open={configOpen} onClose={() => setConfigOpen(false)} />
       <button
         type="button"
         className={cn(classes.configBtn, configOpen && 'hidden')}
-        onClick={toggleConfig}
+        onClick={() => setConfigOpen(true)}
       >
         <SettingsIcon />
       </button>

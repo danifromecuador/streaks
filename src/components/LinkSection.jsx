@@ -15,16 +15,31 @@ export const LinkSection = ({ type }) => {
   const storageKey = isStreak ? 'streaks' : 'bookmarks'
 
   const [addVisible, setAddVisible] = useState('hidden')
+  const [createOpen, setCreateOpen] = useState(false)
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [nameToDelete, setNameToDelete] = useState('')
 
   const openCreate = () => {
-    store.toggleCreateModal()
-    if (store.deleteModalOpen) store.toggleDeleteModal()
+    setCreateOpen(true)
+    setDeleteOpen(false)
   }
 
   const handleDelete = (name) => {
-    store.setNameToDelete(name)
-    if (!store.deleteModalOpen) store.toggleDeleteModal()
-    if (store.createModalOpen) store.toggleCreateModal()
+    setNameToDelete(name)
+    setDeleteOpen(true)
+    setCreateOpen(false)
+  }
+
+  const handleCreateSubmit = (item) => {
+    if (isStreak) streakStore.addStreak(item)
+    else bookmarkStore.addBookmark(item)
+    setCreateOpen(false)
+  }
+
+  const handleDeleteConfirm = () => {
+    if (isStreak) streakStore.deleteStreak(nameToDelete)
+    else bookmarkStore.deleteBookmark(nameToDelete)
+    setDeleteOpen(false)
   }
 
   const showAddOnHover = () => {
@@ -56,8 +71,19 @@ export const LinkSection = ({ type }) => {
           +
         </button>
       </div>
-      <CreateEditModal mode={type} />
-      <DeleteConfirmation type={type} />
+      <CreateEditModal
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        onSubmit={handleCreateSubmit}
+        mode={type}
+      />
+      <DeleteConfirmation
+        open={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+        nameToDelete={nameToDelete}
+        onConfirm={handleDeleteConfirm}
+        type={type}
+      />
     </div>
   )
 }
