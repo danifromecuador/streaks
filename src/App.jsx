@@ -15,13 +15,12 @@ export const App = () => {
         <LinkSection type="bookmark" />
       </div>
       <Config open={configOpen} onClose={() => setConfigOpen(false)} />
-      <button
-        type="button"
+      <div
         className={cn(classes.configBtn, configOpen && 'hidden')}
         onClick={() => setConfigOpen(true)}
       >
         <SettingsIcon />
-      </button>
+      </div>
     </div>
   )
 }
