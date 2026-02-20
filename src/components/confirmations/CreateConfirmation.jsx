@@ -16,7 +16,6 @@ export const CreateConfirmation = () => {
     eraseAlerts()
     if (!name.trim().length) setNameAlert("Enter a name")
     if (!url.trim().length) setUrlAlert("Enter a URL")
-    if (url.trim().length > 0 && !url.trim().includes("www.")) setUrlAlert("Enter a valid URL like www.example.com")
     if (name.trim().length && url.trim().length) {
       const urlDomain = url.split(".")[1]
       const getDomainIcon = `https://icons.duckduckgo.com/ip3/${urlDomain}.com.ico`
