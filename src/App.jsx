@@ -6,7 +6,7 @@ import { cn, classes } from './classes'
 
 /** Root layout: streaks section, bookmarks section, config panel, and settings button. */
 export const App = () => {
-  const [configOpen, setConfigOpen] = useState(true)
+  const [configOpen, setConfigOpen] = useState(false)
 
   return (
     <div className={classes.app}>
