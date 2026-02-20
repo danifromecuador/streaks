@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import AddIcon from '@mui/icons-material/Add'
 import { useStreakStore } from '../store/streaks'
 import { useBookmarkStore } from '../store/bookmarks'
 import { LinkCard } from './LinkCard'
@@ -50,7 +51,7 @@ export const LinkSection = ({ type }) => {
           />
         ))}
         <button type="button" className={cn(addBtnClass, addVisible)} onClick={() => setModal('create')}>
-          +
+          <AddIcon sx={{ fontSize: 'calc((1.5vw + 1.5vh)/1.5)' }} />
         </button>
       </div>
       <CreateEditModal
