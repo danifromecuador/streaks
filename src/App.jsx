@@ -6,7 +6,7 @@ import { Streaks } from './components/streaks/Streaks'
 
 export const App = () => {
   const store = Store()
-  const visibility = store.visible1 ? '' : 'hidden'
+  const visibility = store.visible1 ? 'hidden' : ''
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
