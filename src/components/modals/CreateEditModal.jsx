@@ -13,7 +13,16 @@ const getDomainIcon = (url) => {
 
 const INITIAL_ERRORS = { name: '', url: '' }
 
-export const CreateEditModal = ({ open, onClose, onSubmit, title, submitLabel }) => {
+const getTitle = (type, isEdit) => {
+  if (type === 'streak') return isEdit ? 'Edit streak' : 'Create streak'
+  return isEdit ? 'Edit bookmark' : 'Create bookmark'
+}
+
+const getSubmitLabel = (isEdit) => (isEdit ? 'SAVE' : 'CREATE')
+
+export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false }) => {
+  const title = getTitle(type, isEdit)
+  const submitLabel = getSubmitLabel(isEdit)
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')
   const [errors, setErrors] = useState(INITIAL_ERRORS)

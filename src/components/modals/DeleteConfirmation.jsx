@@ -2,7 +2,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { cn, classes } from '../../classes'
 
 export const DeleteConfirmation = ({ open, onClose, nameToDelete, onConfirm, type }) => {
-  const warning = type === 'streak' ? 'You will lost your streak!' : 'This bookmark will be removed.'
+  const warning = type === 'streak' ? 'You will lost your streak!' : 'This bookmark will be removed'
 
   return (
     <div className={cn(classes.modal, !open && 'hidden')}>

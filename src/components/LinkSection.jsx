@@ -56,8 +56,8 @@ export const LinkSection = ({ type }) => {
         open={modal === 'create'}
         onClose={closeModal}
         onSubmit={onCreateSubmit}
-        title={isStreak ? 'Create new Streak' : 'Add bookmark'}
-        submitLabel={isStreak ? 'CREATE' : 'ADD'}
+        type={type}
+        isEdit={false}
       />
       <DeleteConfirmation
         open={Boolean(modal?.delete)}
