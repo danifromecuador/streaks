@@ -27,7 +27,7 @@ export const classes = {
   configCloseBtn: `cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] top-[calc((1vw+1vh)/2)] flex justify-center items-center ${btnBg} ${btnInputBase} ${btnEffects}`,
 
   // LinkCard
-  linkCard: 'w-[6vw] aspect-[10/13] flex flex-col justify-between items-center relative',
+  linkCard: 'w-[5vw] aspect-[10/13] flex flex-col justify-between items-center relative',
   linkCardLink: 'w-full flex justify-center items-center cursor-pointer',
   linkCardImg: `w-full aspect-square rounded-[${v(3)}]`,
   linkCardActionBtn: `cursor-pointer w-[25%] aspect-square absolute top-0 border-none rounded-action-btn ${btnBg} flex justify-center items-center p-[${v(4)}] ${btnEffects}`,
@@ -38,7 +38,7 @@ export const classes = {
   sectionFull: `w-full h-full ${borderBox} flex justify-center items-center`,
   sectionList: 'w-fit flex items-center gap-[2vw]',
   sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[2vw] p-4',
-  addBtn: `cursor-pointer w-[6vw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3vw] ${btnEffects}`,
+  addBtn: `cursor-pointer w-[5vw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3vw] ${btnEffects}`,
 
   // Modals (overlay = fixed full-screen centering; modal = dialog box)
   modalOverlay: 'fixed inset-0 flex items-center justify-center z-10 bg-black/60',
