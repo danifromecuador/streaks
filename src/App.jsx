@@ -1,31 +1,26 @@
+import { useState } from 'react'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { Store } from './store/Store'
-import { Config } from './components/config/Config'
-import { Streaks } from './components/streaks/Streaks'
-import { CreateConfirmation } from './components/confirmations/CreateConfirmation'
-import { EditConfirmation } from './components/confirmations/EditConfirmation'
-import { DeleteConfirmation } from './components/confirmations/DeleteConfirmation'
-import './App.css'
+import { Config } from './components/Config'
+import { LinkSection } from './components/LinkSection'
+import { cn, classes } from './classes'
 
-
+/** Root layout: streaks section, bookmarks section, config panel, and settings button. */
 export const App = () => {
-  const store = Store()
-  const visibility = store.visible1 ? "" : "hidden"
+  const [configOpen, setConfigOpen] = useState(false)
 
   return (
-    <div className="app">
-      <div className='main'>
-        <Streaks type='streaks' />
-        <Streaks type='shortcuts' />
-        <CreateConfirmation />
-        {(store.streakIdToEdit || store.shortcutIdToEdit) && <EditConfirmation />}
-        {(store.streakIdToDelete || store.shortcutIdToDelete) && <DeleteConfirmation />}
+    <div className={classes.app}>
+      <div className={classes.appMain}>
+        <LinkSection type="streak" />
+        <LinkSection type="bookmark" />
       </div>
-      <Config />
-      <button
-        className={`btn config-btn ${visibility}`}
-        onClick={() => store.toggleVisible1()}
-      ><SettingsIcon /></button>
+      <Config open={configOpen} onClose={() => setConfigOpen(false)} />
+      <div
+        className={cn(classes.configBtn, configOpen && 'hidden')}
+        onClick={() => setConfigOpen(true)}
+      >
+        <SettingsIcon />
+      </div>
     </div>
   )
 }
