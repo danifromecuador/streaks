@@ -14,6 +14,10 @@
     border-radius: calc((1vw + 1vh) / 3);
   }
 
+  .rounded-config-btn {
+    border-radius: calc((1vw + 1vh) / 5);
+  }
+
   .modal-box {
     padding: calc((1vw + 1vh) / 0.5);
     border-radius: calc((1vw + 1vh) / 3);
