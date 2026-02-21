@@ -17,7 +17,7 @@ const btnEffects = 'btn-effects'
 export const classes = {
   // App
   app: 'w-screen h-screen flex justify-center items-center',
-  appMain: 'w-[90%] h-[90%] flex flex-col justify-between gap-[8vh]',
+  appMain: 'w-[90%] h-[90%] flex flex-col justify-between gap-[4vh]',
   configBtn: `cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] bottom-[calc((1vw+1vh)/2)] flex justify-center items-center border-none rounded-config-btn ${btnBg} ${btnEffects}`,
 
   // Config panel
