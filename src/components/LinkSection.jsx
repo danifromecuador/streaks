@@ -15,12 +15,16 @@ export const LinkSection = ({ type }) => {
   const store = isStreak ? streakStore : bookmarkStore
   const items = isStreak ? store.streaks : store.bookmarks
 
-  const [modal, setModal] = useState(null) // null | 'create' | { delete: name } | { edit: item }
+  const [modal, setModal] = useState(null) // null | 'create' | { delete: id } | { edit: id }
 
   const closeModal = () => setModal(null)
   const addItem = (item) => (isStreak ? streakStore.addStreak(item) : bookmarkStore.addBookmark(item))
-  const updateItem = (name, item) => (isStreak ? streakStore.updateStreak(name, item) : bookmarkStore.updateBookmark(name, item))
-  const removeItem = (name) => (isStreak ? streakStore.deleteStreak(name) : bookmarkStore.deleteBookmark(name))
+  const updateItem = (id, item) => (isStreak ? streakStore.updateStreak(id, item) : bookmarkStore.updateBookmark(id, item))
+  const removeItem = (id) => (isStreak ? streakStore.deleteStreak(id) : bookmarkStore.deleteBookmark(id))
+
+  const editId = modal?.edit ?? null
+  const deleteId = modal?.delete ?? null
+  const initialItem = editId ? (items.find((i) => i.id === editId) ?? null) : null
 
   const onCreateSubmit = (item) => {
     addItem(item)
@@ -28,12 +32,12 @@ export const LinkSection = ({ type }) => {
   }
 
   const onEditSubmit = (item) => {
-    if (modal?.edit) updateItem(modal.edit.name, item)
+    if (editId) updateItem(editId, { ...item, id: editId })
     closeModal()
   }
 
   const onDeleteConfirm = () => {
-    if (modal?.delete) removeItem(modal.delete)
+    if (deleteId) removeItem(deleteId)
     closeModal()
   }
 
@@ -44,14 +48,14 @@ export const LinkSection = ({ type }) => {
   return (
     <div className={sectionClass}>
       <div className={listClass}>
-        {items.map((item, k) => (
+        {items.map((item) => (
           <LinkCard
-            key={k}
+            key={item.id}
             name={item.name}
             image={item.image}
             url={item.url}
-            onDelete={() => setModal({ delete: item.name })}
-            onEdit={() => setModal({ edit: item })}
+            onDelete={() => setModal({ delete: item.id })}
+            onEdit={() => setModal({ edit: item.id })}
           />
         ))}
         <button type="button" className={cn(classes.addBtn, atMax && 'hidden')} onClick={() => setModal('create')}>
@@ -59,17 +63,17 @@ export const LinkSection = ({ type }) => {
         </button>
       </div>
       <CreateEditModal
-        open={modal === 'create' || Boolean(modal?.edit)}
+        open={modal === 'create' || Boolean(editId)}
         onClose={closeModal}
-        onSubmit={modal?.edit ? onEditSubmit : onCreateSubmit}
+        onSubmit={editId ? onEditSubmit : onCreateSubmit}
         type={type}
-        isEdit={Boolean(modal?.edit)}
-        initialItem={modal?.edit ?? null}
+        isEdit={Boolean(editId)}
+        initialItem={initialItem}
       />
       <DeleteConfirmation
-        open={Boolean(modal?.delete)}
+        open={Boolean(deleteId)}
         onClose={closeModal}
-        nameToDelete={modal?.delete ?? ''}
+        nameToDelete={deleteId ? (items.find((i) => i.id === deleteId)?.name ?? '') : ''}
         onConfirm={onDeleteConfirm}
         type={type}
       />
