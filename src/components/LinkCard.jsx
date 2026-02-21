@@ -29,10 +29,10 @@ export const LinkCard = ({ name, image, url, onDelete, onEdit }) => {
         />
       </a>
       <button type="button" className={cn(classes.linkCardActionBtn, 'left-0', visible)} onClick={onDelete}>
-        <DeleteIcon sx={{ fontSize: iconSize, color: 'black' }} />
+        <DeleteIcon sx={{ fontSize: iconSize, color: 'white' }} />
       </button>
       <button type="button" className={cn(classes.linkCardActionBtn, 'right-0', visible)} onClick={onEdit}>
-        <EditIcon sx={{ fontSize: iconSize, color: 'black' }} />
+        <EditIcon sx={{ fontSize: iconSize, color: 'white' }} />
       </button>
       <span className={classes.linkCardLabel}>{name}</span>
     </div>
