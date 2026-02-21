@@ -10,25 +10,25 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
   const submitLabel = getSubmitLabel(isEdit)
 
   return (
-    <div className={cn(classes.modalOverlay, !open && 'hidden')}>
-      <div className={classes.modal}>
-      <h2>{title}</h2>
-      <button type="button" className={classes.modalCloseBtn} onClick={onClose}>
-        <CloseIcon />
-      </button>
-      <div>
-        <p>name</p>
-        <input type="text" className={classes.modalInput} value={name} onChange={(e) => setName(e.target.value)} />
-        <span className={classes.modalAlert}>{errors.name}</span>
-      </div>
-      <div>
-        <p>url</p>
-        <input type="text" className={classes.modalInput} value={url} onChange={(e) => setUrl(e.target.value)} />
-        <span className={classes.modalAlert}>{errors.url}</span>
-      </div>
-      <button type="button" className={classes.modalSubmitBtn} onClick={submit}>
-        {submitLabel}
-      </button>
+    <div className={cn(classes.modalOverlay, !open && 'hidden')} onClick={onClose}>
+      <div className={classes.modal} onClick={(e) => e.stopPropagation()}>
+        <h2>{title}</h2>
+        <button type="button" className={classes.modalCloseBtn} onClick={onClose}>
+          <CloseIcon />
+        </button>
+        <div>
+          <p>name</p>
+          <input type="text" className={classes.modalInput} value={name} onChange={(e) => setName(e.target.value)} />
+          <span className={classes.modalAlert}>{errors.name}</span>
+        </div>
+        <div>
+          <p>url</p>
+          <input type="text" className={classes.modalInput} value={url} onChange={(e) => setUrl(e.target.value)} />
+          <span className={classes.modalAlert}>{errors.url}</span>
+        </div>
+        <button type="button" className={classes.modalSubmitBtn} onClick={submit}>
+          {submitLabel}
+        </button>
       </div>
     </div>
   )
