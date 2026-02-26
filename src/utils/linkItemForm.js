@@ -11,6 +11,14 @@ export const getDomainIcon = (url) => {
   }
 }
 
+/** Builds a full link item from user input (name, url). Id and image are set here; callers pass this to the store. */
+export const buildLinkItem = ({ name, url, id }) => ({
+  id: id ?? crypto.randomUUID(),
+  name: (name ?? '').trim(),
+  url: (url ?? '').trim(),
+  image: getDomainIcon(url ?? ''),
+})
+
 /** Returns validation errors for name and url. Empty string = no error. */
 export const validateForm = (name, url) => ({
   name: name.trim() ? '' : 'Enter a name',
