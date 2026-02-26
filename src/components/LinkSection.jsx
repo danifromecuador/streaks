@@ -16,11 +16,13 @@ export const LinkSection = ({ type }) => {
   const items = isStreak ? store.streaks : store.bookmarks
 
   const [modal, setModal] = useState(null) // null | 'create' | { delete: id } | { edit: id }
+  const [draggingId, setDraggingId] = useState(null)
 
   const closeModal = () => setModal(null)
   const addItem = (item) => (isStreak ? streakStore.addStreak(item) : bookmarkStore.addBookmark(item))
   const updateItem = (id, item) => (isStreak ? streakStore.updateStreak(id, item) : bookmarkStore.updateBookmark(id, item))
   const removeItem = (id) => (isStreak ? streakStore.deleteStreak(id) : bookmarkStore.deleteBookmark(id))
+  const reorder = (fromIndex, toIndex) => (isStreak ? streakStore.reorderStreaks(fromIndex, toIndex) : bookmarkStore.reorderBookmarks(fromIndex, toIndex))
 
   const editId = modal?.edit ?? null
   const deleteId = modal?.delete ?? null
@@ -48,14 +50,25 @@ export const LinkSection = ({ type }) => {
   return (
     <div className={sectionClass}>
       <div className={listClass}>
-        {items.map((item) => (
+        {items.map((item, index) => (
           <LinkCard
             key={item.id}
+            id={item.id}
             name={item.name}
             image={item.image}
             url={item.url}
             onDelete={() => setModal({ delete: item.id })}
             onEdit={() => setModal({ edit: item.id })}
+            index={index}
+            onDragStart={() => setDraggingId(item.id)}
+            onDragOver={() => {}}
+            onDrop={(toIndex) => {
+              const fromIndex = items.findIndex((i) => i.id === draggingId)
+              if (fromIndex !== -1 && fromIndex !== toIndex) reorder(fromIndex, toIndex)
+              setDraggingId(null)
+            }}
+            onDragEnd={() => setDraggingId(null)}
+            isDragging={draggingId === item.id}
           />
         ))}
         <button type="button" className={cn(classes.addBtn, atMax && 'hidden')} onClick={() => setModal('create')}>

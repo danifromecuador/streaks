@@ -12,6 +12,13 @@ export const useBookmarkStore = create(
           bookmarks: state.bookmarks.map(b => b.id === id ? { ...data, id } : b),
         })),
         deleteBookmark: id => set(state => ({ bookmarks: state.bookmarks.filter(b => b.id !== id) })),
+        reorderBookmarks: (fromIndex, toIndex) => set(state => {
+          if (fromIndex === toIndex) return state
+          const arr = [...state.bookmarks]
+          const [removed] = arr.splice(fromIndex, 1)
+          arr.splice(toIndex, 0, removed)
+          return { bookmarks: arr }
+        }),
       }),
       { name: 'bookmarks', partialize: state => ({ bookmarks: state.bookmarks }) }
     )

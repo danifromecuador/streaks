@@ -12,6 +12,13 @@ export const useStreakStore = create(
           streaks: state.streaks.map(s => s.id === id ? { ...data, id } : s),
         })),
         deleteStreak: id => set(state => ({ streaks: state.streaks.filter(s => s.id !== id) })),
+        reorderStreaks: (fromIndex, toIndex) => set(state => {
+          if (fromIndex === toIndex) return state
+          const arr = [...state.streaks]
+          const [removed] = arr.splice(fromIndex, 1)
+          arr.splice(toIndex, 0, removed)
+          return { streaks: arr }
+        }),
       }),
       { name: 'streaks', partialize: state => ({ streaks: state.streaks }) }
     )

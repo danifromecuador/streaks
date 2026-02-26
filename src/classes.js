@@ -28,6 +28,8 @@ export const classes = {
 
   // LinkCard
   linkCard: 'w-[5vw] aspect-[10/13] flex flex-col justify-between items-center relative',
+  linkCardDraggable: 'cursor-grab active:cursor-grabbing',
+  linkCardDragging: 'opacity-50 cursor-grabbing',
   linkCardLink: 'w-full flex justify-center items-center cursor-pointer',
   linkCardImg: `w-full aspect-square rounded-[${v(3)}]`,
   linkCardActionBtn: `cursor-pointer w-[25%] aspect-square absolute top-0 border-none rounded-action-btn ${btnBg} flex justify-center items-center p-[${v(4)}] ${btnEffects}`,
