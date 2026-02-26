@@ -7,11 +7,18 @@
     box-sizing: border-box;
     font-size: calc((1vw + 1vh) / 1.5);
   }
+  /* Content inside the 16:9 container scales with the container, not the viewport */
+  .app-main {
+    font-size: calc((1cqw + 1cqh) / 1.5);
+  }
 }
 
 @layer components {
   .rounded-action-btn {
     border-radius: calc((1vw + 1vh) / 3);
+  }
+  .app-main .rounded-action-btn {
+    border-radius: calc((1cqw + 1cqh) / 3);
   }
 
   .rounded-config-btn {
