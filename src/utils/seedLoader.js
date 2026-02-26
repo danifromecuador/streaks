@@ -1,6 +1,6 @@
 import { useStreakStore } from '../store/streaks'
 import { useBookmarkStore } from '../store/bookmarks'
-import { getDomainIcon } from './linkItemForm'
+import { buildLinkItem } from './linkItemForm'
 
 /** Fetches seed-data.json from public. Returns null if not found or not ok. */
 export async function fetchSeedData() {
@@ -8,7 +8,7 @@ export async function fetchSeedData() {
   return res.ok ? res.json() : null
 }
 
-/** Clears all existing streaks and bookmarks, then loads seed data (name, url). Id and image are assigned by store and getDomainIcon. */
+/** Clears all existing streaks and bookmarks, then loads seed data (name, url). Full item is built via buildLinkItem. */
 export function applySeed(data) {
   if (!data || (!data.streaks?.length && !data.bookmarks?.length)) return
 
@@ -19,6 +19,6 @@ export function applySeed(data) {
 
   const { addStreak } = useStreakStore.getState()
   const { addBookmark } = useBookmarkStore.getState()
-  data.streaks?.forEach((item) => addStreak({ name: item.name, url: item.url, image: getDomainIcon(item.url) }))
-  data.bookmarks?.forEach((item) => addBookmark({ name: item.name, url: item.url, image: getDomainIcon(item.url) }))
+  data.streaks?.forEach((item) => addStreak(buildLinkItem(item)))
+  data.bookmarks?.forEach((item) => addBookmark(buildLinkItem(item)))
 }
