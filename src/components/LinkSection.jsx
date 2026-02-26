@@ -32,7 +32,7 @@ export const LinkSection = ({ type }) => {
   }
 
   const onEditSubmit = (item) => {
-    if (editId) updateItem(editId, { ...item, id: editId })
+    if (editId) updateItem(editId, item)
     closeModal()
   }
 

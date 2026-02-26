@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getDomainIcon } from '../utils/linkItemForm'
-import { validateForm } from '../utils/linkItemForm'
+import { buildLinkItem, validateForm } from '../utils/linkItemForm'
 
 const INITIAL_ERRORS = { name: '', url: '' }
 
@@ -26,7 +25,7 @@ export const useCreateEditForm = (onSubmit, initialItem = null) => {
     const next = validateForm(name, url)
     setErrors(next)
     if (next.name || next.url) return
-    onSubmit({ name: name.trim(), image: getDomainIcon(url), url: url.trim() })
+    onSubmit(buildLinkItem({ name, url, id: initialItem?.id }))
     if (!initialItem) {
       setName('')
       setUrl('')
