@@ -1,15 +1,45 @@
-# React + Vite
+# Streaks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite app for managing streaks and bookmarks (shortcuts).
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+## Running the app
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Without seed data** (empty streaks and bookmarks):
+
+```bash
+npm run dev
+```
+
+**With seed data** (10 streaks + 40 bookmarks for testing):
+
+1. Generate the seed file:
+   ```bash
+   npm run seed
+   ```
+   This writes `public/seed-data.json` from `seeds/streaks.seed.json` and `seeds/shortcuts.seed.json`.
+
+2. Start the app with the seed loader enabled:
+   ```bash
+   VITE_LOAD_SEED=true npm run dev
+   ```
+   On first load, the app will replace any existing streaks and bookmarks with the seed data.
+
+If you run `npm run dev` without `VITE_LOAD_SEED=true`, the app will not load the seed file; use this when you want to keep or start with empty data.
+
+## Other commands
+
+- `npm run build` — production build
+- `npm run preview` — preview production build
+- `npm run lint` — run ESLint
 
 
-[color palet used](https://paletadecolores.com.mx/paleta/090f13/171f25/752e2b/c90a02/f2eab7/)
+
+# Resources
+
+[color palet](https://paletadecolores.com.mx/paleta/090f13/171f25/752e2b/c90a02/f2eab7/)

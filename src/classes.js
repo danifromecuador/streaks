@@ -1,8 +1,9 @@
 /** Join class names; falsy values are omitted. */
 export const cn = (...args) => args.filter(Boolean).join(' ')
 
-const v = (x) => `calc((1vw+1vh)/${x})`
-const borderBox = 'border border-[calc((1vw+1vh)/10)] border-[#8fc9b9] rounded-[calc((1vw+1vh)/1.5)]'
+/** Container-relative (for content inside the 16:9 app-main). */
+const c = (x) => `calc((1cqw+1cqh)/${x})`
+const borderBoxC = 'border border-[calc((1cqw+1cqh)/10)] border-[#8fc9b9] rounded-[calc((1cqw+1cqh)/1.5)]'
 
 /** Exact Tailwind equivalent of the former base styles for button/input. */
 const btnInputBase =
@@ -17,8 +18,8 @@ const btnEffects = 'btn-effects'
 export const classes = {
   // App
   app: 'w-screen h-screen flex justify-center items-center',
-  appMain: 'w-[90%] h-[90%] flex flex-col justify-between gap-[4vh]',
-  configBtn: `cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] bottom-[calc((1vw+1vh)/2)] flex justify-center items-center border-none rounded-config-btn ${btnBg} ${btnEffects}`,
+  appMain: 'app-main [container-type:size] aspect-[16/9] w-[min(100%,177.78vh)] max-h-[min(100vh,56.25vw)] p-[calc((1vw+1vh)/2)] flex flex-col justify-between gap-[calc((1vw+1vh)/4)]',
+  configBtnInSection: `cursor-pointer w-[2vw] aspect-square absolute right-[calc((1cqw+1cqh)/2)] bottom-[calc((1cqw+1cqh)/2)] flex justify-center items-center border-none rounded-config-btn ${btnBg} ${btnEffects}`,
 
   // Config panel
   configBackdrop: 'fixed inset-0 bg-black/60 z-[1]',
@@ -26,19 +27,21 @@ export const classes = {
   configSlide: (open) => (open ? 'translate-x-0' : 'translate-x-[120%]'),
   configCloseBtn: `cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] top-[calc((1vw+1vh)/2)] flex justify-center items-center ${btnBg} ${btnInputBase} ${btnEffects}`,
 
-  // LinkCard
-  linkCard: 'w-[5vw] aspect-[10/13] flex flex-col justify-between items-center relative',
+  // LinkCard (sizes relative to 16:9 container)
+  linkCard: 'w-[5cqw] aspect-[10/13] flex flex-col justify-between items-center relative',
+  linkCardDraggable: 'cursor-grab active:cursor-grabbing',
+  linkCardDragging: 'opacity-50 cursor-grabbing',
   linkCardLink: 'w-full flex justify-center items-center cursor-pointer',
-  linkCardImg: `w-full aspect-square rounded-[${v(3)}]`,
-  linkCardActionBtn: `cursor-pointer w-[25%] aspect-square absolute top-0 border-none rounded-action-btn ${btnBg} flex justify-center items-center p-[${v(4)}] ${btnEffects}`,
-  linkCardLabel: 'w-[130%] text-center whitespace-nowrap overflow-hidden text-ellipsis text-[1vw]',
+  linkCardImg: `w-full aspect-square rounded-[${c(3)}]`,
+  linkCardActionBtn: `cursor-pointer w-[25%] aspect-square absolute top-0 border-none rounded-action-btn ${btnBg} flex justify-center items-center p-[${c(4)}] ${btnEffects}`,
+  linkCardLabel: 'w-[130%] text-center whitespace-nowrap overflow-hidden text-ellipsis text-[1cqw]',
 
-  // Streaks / Bookmarks sections
-  section: `w-full aspect-[10/1] ${borderBox} flex justify-center items-center`,
-  sectionFull: `w-full h-full ${borderBox} flex justify-center items-center`,
-  sectionList: 'w-fit flex items-between justify-around gap-[4vw]',
-  sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[4vw] p-4',
-  addBtn: `cursor-pointer w-[5vw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3vw] ${btnEffects}`,
+  // Streaks / Bookmarks sections (sizes relative to 16:9 container)
+  section: `w-full aspect-[10/1] ${borderBoxC} flex justify-center items-center`,
+  sectionFull: `w-full h-full relative ${borderBoxC} flex justify-center items-center`,
+  sectionList: 'w-fit flex items-between justify-around gap-[5cqw]',
+  sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[5cqw] p-4',
+  addBtn: `cursor-pointer w-[5cqw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3cqw] ${btnEffects}`,
 
   // Modals (overlay = fixed full-screen centering; modal = dialog box)
   modalOverlay: 'fixed inset-0 flex items-center justify-center z-10 bg-black/60',
