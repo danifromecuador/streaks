@@ -39,8 +39,8 @@ export const classes = {
   // Streaks / Bookmarks sections (sizes relative to 16:9 container)
   section: `w-full aspect-[10/1] ${borderBoxC} flex justify-center items-center`,
   sectionFull: `w-full h-full relative ${borderBoxC} flex justify-center items-center`,
-  sectionList: 'w-fit flex items-between justify-around gap-[4cqw]',
-  sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[4cqw] p-4',
+  sectionList: 'w-fit flex items-between justify-around gap-[5cqw]',
+  sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[5cqw] p-4',
   addBtn: `cursor-pointer w-[5cqw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3cqw] ${btnEffects}`,
 
   // Modals (overlay = fixed full-screen centering; modal = dialog box)
