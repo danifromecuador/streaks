@@ -16,7 +16,8 @@ export const getDomainIconUrls = (url) => {
     const hostname = new URL(raw.startsWith('http') ? raw : `https://${raw}`).hostname
     const domain = hostname.replace(/^www\./, '')
     const apex = toApexDomain(domain)
-    if (!apex) return []
+    // If the "domain" has no dot (e.g. "asdf"), treat it as invalid and fall back to default icon.
+    if (!apex || !apex.includes('.')) return []
     return [
       `https://ico.faviconkit.net/favicon/${apex}?sz=128`,
       `https://favicon.im/${apex}?larger=true`,
