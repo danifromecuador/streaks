@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import SettingsIcon from '@mui/icons-material/Settings'
 import { Config } from './components/Config'
 import { LinkSection } from './components/LinkSection'
-import { cn, classes } from './classes'
+import { classes } from './classes'
 import { fetchSeedData, applySeed } from './utils/seedLoader'
 
-/** Root layout: streaks section, bookmarks section, config panel, and settings button. */
+/** Root layout: streaks section, bookmarks section, and config panel. */
 export const App = () => {
   const [configOpen, setConfigOpen] = useState(false)
 
@@ -19,15 +18,13 @@ export const App = () => {
     <div className={classes.app}>
       <div className={classes.appMain}>
         <LinkSection type="streak" />
-        <LinkSection type="bookmark" />
+        <LinkSection
+          type="bookmark"
+          configOpen={configOpen}
+          onConfigClick={() => setConfigOpen(true)}
+        />
       </div>
       <Config open={configOpen} onClose={() => setConfigOpen(false)} />
-      <div
-        className={cn(classes.configBtn, configOpen && 'hidden')}
-        onClick={() => setConfigOpen(true)}
-      >
-        <SettingsIcon />
-      </div>
     </div>
   )
 }

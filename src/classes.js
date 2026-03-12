@@ -19,7 +19,7 @@ export const classes = {
   // App
   app: 'w-screen h-screen flex justify-center items-center',
   appMain: 'app-main [container-type:size] aspect-[16/9] w-[min(100%,177.78vh)] max-h-[min(100vh,56.25vw)] p-[calc((1vw+1vh)/2)] flex flex-col justify-between gap-[calc((1vw+1vh)/4)]',
-  configBtn: `cursor-pointer w-[2vw] aspect-square fixed right-[calc((1vw+1vh)/2)] bottom-[calc((1vw+1vh)/2)] flex justify-center items-center border-none rounded-config-btn ${btnBg} ${btnEffects}`,
+  configBtnInSection: `cursor-pointer w-[2vw] aspect-square absolute right-[calc((1cqw+1cqh)/2)] bottom-[calc((1cqw+1cqh)/2)] flex justify-center items-center border-none rounded-config-btn ${btnBg} ${btnEffects}`,
 
   // Config panel
   configBackdrop: 'fixed inset-0 bg-black/60 z-[1]',
@@ -38,7 +38,7 @@ export const classes = {
 
   // Streaks / Bookmarks sections (sizes relative to 16:9 container)
   section: `w-full aspect-[10/1] ${borderBoxC} flex justify-center items-center`,
-  sectionFull: `w-full h-full ${borderBoxC} flex justify-center items-center`,
+  sectionFull: `w-full h-full relative ${borderBoxC} flex justify-center items-center`,
   sectionList: 'w-fit flex items-between justify-around gap-[4cqw]',
   sectionListWrap: 'w-fit flex flex-wrap items-center justify-center gap-[4cqw] p-4',
   addBtn: `cursor-pointer w-[5cqw] aspect-square border-none rounded-action-btn ${btnBg} text-white flex justify-center items-center self-start py-0 px-[0.3cqw] ${btnEffects}`,

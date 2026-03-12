@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import AddIcon from '@mui/icons-material/Add'
+import SettingsIcon from '@mui/icons-material/Settings'
 import { useStreakStore } from '../store/streaks'
 import { useBookmarkStore } from '../store/bookmarks'
 import { LinkCard } from './LinkCard'
@@ -8,7 +9,7 @@ import { DeleteConfirmation } from './modals/DeleteConfirmation'
 import { cn, classes } from '../classes'
 
 /** Renders a list of link items (streaks or bookmarks), add button, and create/delete modals. Type is 'streak' or 'bookmark'. */
-export const LinkSection = ({ type }) => {
+export const LinkSection = ({ type, configOpen, onConfigClick }) => {
   const isStreak = type === 'streak'
   const streakStore = useStreakStore()
   const bookmarkStore = useBookmarkStore()
@@ -90,6 +91,16 @@ export const LinkSection = ({ type }) => {
         onConfirm={onDeleteConfirm}
         type={type}
       />
+      {type === 'bookmark' && onConfigClick && (
+        <div
+          className={cn(classes.configBtnInSection, configOpen && 'hidden')}
+          onClick={onConfigClick}
+          role="button"
+          aria-label="Open configuration"
+        >
+          <SettingsIcon />
+        </div>
+      )}
     </div>
   )
 }
