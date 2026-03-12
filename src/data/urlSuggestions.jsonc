@@ -1,5 +1,5 @@
 [
-  // Enlaces personales
+  // Additional links
   {"name": "Duolingo", "url": "https://www.duolingo.com"},
   {"name": "Codecademy", "url": "https://www.codecademy.com"},
   {"name": "Google Books", "url": "https://books.google.com"},
@@ -38,7 +38,7 @@
   {"name": "No Country", "url": "https://www.nocountry.tech"},
   {"name": "Platzi", "url": "https://platzi.com"},
 
-  // Conocimiento y Referencia (enciclopedias, documentación, aprendizaje abierto)
+  // Knowledge & Reference (encyclopedias, documentation, open learning)
   {"name": "Wikipedia", "url": "https://www.wikipedia.org"},
   {"name": "Wikimedia Commons", "url": "https://commons.wikimedia.org"},
   {"name": "Wiktionary", "url": "https://www.wiktionary.org"},
@@ -138,7 +138,8 @@
   {"name": "Internet Sacred Text Archive", "url": "https: //www.sacred-texts.com"},
   {"name": "Bible Gateway", "url": "https://www.biblegateway.com"},
   {"name": "Quran.com", "url": "https://quran.com"},
-  // Comunicación y Comunidad (foros, mensajería web, comunidades online)
+
+  // Communication & Community (forums, web messaging, online communities)
   {"name": "Reddit", "url": "https://www.reddit.com"},
   {"name": "Discord", "url": "https://discord.com"},
   {"name": "Slack", "url": "https://slack.com"},
@@ -234,7 +235,8 @@
   {"name": "Letterboxd", "url": "https://letterboxd.com"},
   {"name": "SoundCloud Community", "url": "https://soundcloud.com"},
   {"name": "Bandcamp Community", "url": "https://bandcamp.com"},
-  // Productividad y Trabajo (gestión de tareas, colaboración, herramientas laborales)
+  
+  // Productivity & Work (task management, collaboration, work tools)
   {"name": "Notion", "url": "https://www.notion.so"},
   {"name": "Trello", "url": "https://trello.com"},
   {"name": "Asana", "url": "https://asana.com"},
@@ -338,7 +340,8 @@
   {"name": "LiquidPlanner", "url": "https://www.liquidplanner.com"},
   {"name": "FunctionFox", "url": "https://functionfox.com"},
   {"name": "Avaza", "url": "https://www.avaza.com"},
-  // Ciencia e Investigación (academia, publicaciones científicas, datos abiertos)
+
+  // Science & Research (academia, scientific publications, open data)
   {"name": "Nature", "url": "https://nature.com"},
   {"name": "Science Magazine", "url": "https://science.org"},
   {"name": "ArXiv", "url": "https://arxiv.org"},
@@ -439,7 +442,8 @@
   {"name": "CSIRO", "url": "https://csiro.au"},
   {"name": "Wellcome Trust", "url": "https://wellcome.org"},
   {"name": "Gates Open Research", "url": "https://gatesopenresearch.org"},
-  // Gobierno y Servicios Públicos (instituciones, trámites, organismos oficiales)
+
+  // Government & Public Services (institutions, procedures, official organizations)
   {"name": "Portal de la Unión Europea", "url": "https://europa.eu"},
   {"name": "USA.gov", "url": "https://usa.gov"},
   {"name": "Gov.uk", "url": "https://gov.uk"},
@@ -540,7 +544,8 @@
   {"name": "Iberia Gov Portal", "url": "https://portugal.gov.pt"},
   {"name": "Swiss Authorities Online", "url": "https://ch.ch"},
   {"name": "Singapore Government Agency", "url": "https://gov.sg"},
-  // Finanzas y Economía (banca, inversiones, criptomonedas, educación financiera)
+
+  // Finance & Economy (banking, investments, cryptocurrencies, financial education)
   {"name": "Bloomberg", "url": "https://bloomberg.com"},
   {"name": "Reuters Finance", "url": "https://reuters.com/finance"},
   {"name": "Financial Times", "url": "https://ft.com"},
@@ -641,7 +646,8 @@
   {"name": "LocalBitcoins", "url": "https://localbitcoins.com"},
   {"name": "Paxful", "url": "https://paxful.com"},
   {"name": "Blockchain.com", "url": "https://blockchain.com"},
-  // Viajes y Geografía (turismo, mapas, transporte, guías del mundo)
+
+  // Travel & Geography (tourism, maps, transport, world guides)
   {"name": "Google Maps", "url": "https://maps.google.com"},
   {"name": "TripAdvisor", "url": "https://tripadvisor.com"},
   {"name": "Booking.com", "url": "https://booking.com"},
@@ -742,7 +748,8 @@
   {"name": "The World Factbook (CIA)", "url": "https://cia.gov/the-world-factbook"},
   {"name": "Statoids", "url": "http://statoids.com"},
   {"name": "Airlines.org", "url": "https://airlines.org"},
-  // Estilo de Vida y Bienestar (salud general, fitness, alimentación, desarrollo personal)
+
+  // Lifestyle & Wellbeing (general health, fitness, nutrition, personal growth)
   {"name": "Healthline", "url": "https://healthline.com"},
   {"name": "WebMD", "url": "https://webmd.com"},
   {"name": "Mayo Clinic", "url": "https://mayoclinic.org"},
@@ -843,7 +850,8 @@
   {"name": "Elephant Journal", "url": "https://elephantjournal.com"},
   {"name": "OnBeing", "url": "https://onbeing.org"},
   {"name": "The Chopra Center", "url": "https://chopra.com"},
-  // Arte y Creatividad (diseño, fotografía, escritura, música, creación digital)
+
+  // Art & Creativity (design, photography, writing, music, digital creation)
   {"name": "Behance", "url": "https://behance.net"},
   {"name": "Dribbble", "url": "https://dribbble.com"},
   {"name": "Adobe Creative Cloud", "url": "https://adobe.com"},
@@ -944,7 +952,8 @@
   {"name": "Wacom", "url": "https://wacom.com"},
   {"name": "CorelDRAW", "url": "https://coreldraw.com"},
   {"name": "Pantone", "url": "https://pantone.com"},
-  // Juegos y Ocio Interactivo (videojuegos, puzzles, simuladores, actividades recreativas online)
+
+  // Games & Interactive Leisure (video games, puzzles, simulators, online recreational activities)
   {"name": "Steam", "url": "https://store.steampowered.com"},
   {"name": "Epic Games Store", "url": "https://epicgames.com"},
   {"name": "GOG.com", "url": "https://gog.com"},
