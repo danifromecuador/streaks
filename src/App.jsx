@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Config } from './components/Config'
-import { LinkSection } from './components/LinkSection'
+import { StreakSection } from './components/StreakSection'
+import { BookmarkSection } from './components/BookmarkSection'
 import { classes } from './classes'
 import { fetchSeedData, applySeed } from './utils/seedLoader'
 
@@ -17,9 +18,8 @@ export const App = () => {
   return (
     <div className={classes.app}>
       <div className={classes.appMain}>
-        <LinkSection type="streak" />
-        <LinkSection
-          type="bookmark"
+        <StreakSection />
+        <BookmarkSection
           configOpen={configOpen}
           onConfigClick={() => setConfigOpen(true)}
         />

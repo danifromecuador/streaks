@@ -8,19 +8,22 @@ const iconSize = 'calc((1.5vw + 1.5vh)/1.5)'
 const MIN_ICON_SIZE = 64
 
 /** Single link tile: image, label, external link. Shows delete and edit buttons on hover. Optional drag props enable reorder. Tries icon providers in order; on error or low-res (naturalWidth < MIN_ICON_SIZE) falls back to next provider. */
-export const LinkCard = ({ name, image, url, onDelete, onEdit, id, index, onDragStart, onDragOver, onDrop, onDragEnd, isDragging }) => {
+export const LinkCard = ({ name, image, url, onDelete, onEdit, id, index, onDragStart, onDrop, onDragEnd, isDragging }) => {
   const [visible, setVisible] = useState('hidden')
   const [iconIndex, setIconIndex] = useState(0)
   const [useDefaultIcon, setUseDefaultIcon] = useState(false)
-  const iconUrls = useMemo(() => getDomainIconUrls(url ?? ''), [url])
+  const iconUrls = useMemo(() => {
+    const providers = getDomainIconUrls(url ?? '')
+    return image ? [image, ...providers] : providers
+  }, [url, image])
   useEffect(() => {
     setIconIndex(0)
     setUseDefaultIcon(false)
-  }, [url])
+  }, [url, image])
   const imgSrc = useDefaultIcon || !iconUrls.length
     ? DEFAULT_LINK_ICON
     : iconUrls[iconIndex] ?? DEFAULT_LINK_ICON
-  const isDraggable = typeof index === 'number' && onDragStart && onDragOver && onDrop && onDragEnd
+  const isDraggable = typeof index === 'number' && onDragStart && onDrop && onDragEnd
 
   const tryNextProvider = () => {
     if (iconIndex < iconUrls.length - 1) setIconIndex((i) => i + 1)
@@ -38,7 +41,7 @@ export const LinkCard = ({ name, image, url, onDelete, onEdit, id, index, onDrag
       onMouseEnter={() => setVisible('')}
       onMouseLeave={() => setVisible('hidden')}
       onDragStart={isDraggable ? (e) => { e.dataTransfer.setData('text/plain', id); e.dataTransfer.effectAllowed = 'move'; onDragStart(); } : undefined}
-      onDragOver={isDraggable ? (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; onDragOver(index); } : undefined}
+      onDragOver={isDraggable ? (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; } : undefined}
       onDrop={isDraggable ? (e) => { e.preventDefault(); onDrop(index); } : undefined}
       onDragEnd={isDraggable ? onDragEnd : undefined}
     >

@@ -39,10 +39,10 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
   const firstInputRef = useRef(null)
   const urlInputRef = useRef(null)
   // Whether the URL suggestions dropdown is visible.
-  const [showUrlSuggestions, setShowUrlSuggestions] = useState(true)
+  const [showUrlSuggestions, setShowUrlSuggestions] = useState(false)
   // Index of the currently highlighted URL suggestion for keyboard navigation.
   const [activeUrlSuggestionIndex, setActiveUrlSuggestionIndex] = useState(-1)
-  const { name, url, errors, setName, setUrl, submit } = useCreateEditForm(onSubmit, isEdit ? initialItem : null)
+  const { name, url, errors, setName, setUrl, submit, reset } = useCreateEditForm(onSubmit, isEdit ? initialItem : null)
   const title = getTitle(type, isEdit)
   const submitLabel = getSubmitLabel(isEdit)
 
@@ -75,14 +75,14 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
     }
   }, [showUrlSuggestions, urlMatches, activeUrlSuggestionIndex])
 
-  /**
-   * Focus the first input when the modal opens to keep the flow
-   * fast and keyboard-friendly.
-   */
   useEffect(() => {
     if (open) {
       const t = setTimeout(() => firstInputRef.current?.focus(), 0)
       return () => clearTimeout(t)
+    } else {
+      reset()
+      setShowUrlSuggestions(false)
+      setActiveUrlSuggestionIndex(-1)
     }
   }, [open])
 
@@ -105,7 +105,7 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
         aria-labelledby="create-edit-title"
       >
         <h2 id="create-edit-title">{title}</h2>
-        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Cerrar">
+        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Close">
           <CloseIcon />
         </button>
         <form onSubmit={handleSubmit} className="flex flex-col gap-[1vw]">

@@ -5,7 +5,7 @@ import { cn, classes } from '../../classes'
 /** Confirmation dialog before deleting a streak or bookmark. type sets the warning copy; onConfirm performs the delete. */
 export const DeleteConfirmation = ({ open, onClose, nameToDelete, onConfirm, type }) => {
   const confirmBtnRef = useRef(null)
-  const warning = type === 'streak' ? 'You will lost your streak!' : 'This bookmark will be removed'
+  const warning = type === 'streak' ? 'You will lose your streak!' : 'This bookmark will be removed'
 
   useEffect(() => {
     if (open) {
@@ -25,7 +25,7 @@ export const DeleteConfirmation = ({ open, onClose, nameToDelete, onConfirm, typ
         aria-describedby="delete-dialog-desc"
       >
         <h2 id="delete-dialog-title">Are you sure to delete {nameToDelete}?</h2>
-        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Cerrar">
+        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Close">
           <CloseIcon />
         </button>
         <p id="delete-dialog-desc" className={classes.modalAlert}>
