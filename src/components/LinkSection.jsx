@@ -11,19 +11,29 @@ import { cn, classes } from '../classes'
 /** Renders a list of link items (streaks or bookmarks), add button, and create/delete modals. Type is 'streak' or 'bookmark'. */
 export const LinkSection = ({ type, configOpen, onConfigClick }) => {
   const isStreak = type === 'streak'
-  const streakStore = useStreakStore()
-  const bookmarkStore = useBookmarkStore()
-  const store = isStreak ? streakStore : bookmarkStore
-  const items = isStreak ? store.streaks : store.bookmarks
+
+  const streaks = useStreakStore((s) => s.streaks)
+  const addStreak = useStreakStore((s) => s.addStreak)
+  const updateStreak = useStreakStore((s) => s.updateStreak)
+  const deleteStreak = useStreakStore((s) => s.deleteStreak)
+  const reorderStreaks = useStreakStore((s) => s.reorderStreaks)
+
+  const bookmarks = useBookmarkStore((s) => s.bookmarks)
+  const addBookmark = useBookmarkStore((s) => s.addBookmark)
+  const updateBookmark = useBookmarkStore((s) => s.updateBookmark)
+  const deleteBookmark = useBookmarkStore((s) => s.deleteBookmark)
+  const reorderBookmarks = useBookmarkStore((s) => s.reorderBookmarks)
+
+  const items = isStreak ? streaks : bookmarks
 
   const [modal, setModal] = useState(null) // null | 'create' | { delete: id } | { edit: id }
   const [draggingId, setDraggingId] = useState(null)
 
   const closeModal = () => setModal(null)
-  const addItem = (item) => (isStreak ? streakStore.addStreak(item) : bookmarkStore.addBookmark(item))
-  const updateItem = (id, item) => (isStreak ? streakStore.updateStreak(id, item) : bookmarkStore.updateBookmark(id, item))
-  const removeItem = (id) => (isStreak ? streakStore.deleteStreak(id) : bookmarkStore.deleteBookmark(id))
-  const reorder = (fromIndex, toIndex) => (isStreak ? streakStore.reorderStreaks(fromIndex, toIndex) : bookmarkStore.reorderBookmarks(fromIndex, toIndex))
+  const addItem = (item) => (isStreak ? addStreak(item) : addBookmark(item))
+  const updateItem = (id, item) => (isStreak ? updateStreak(id, item) : updateBookmark(id, item))
+  const removeItem = (id) => (isStreak ? deleteStreak(id) : deleteBookmark(id))
+  const reorder = (fromIndex, toIndex) => (isStreak ? reorderStreaks(fromIndex, toIndex) : reorderBookmarks(fromIndex, toIndex))
 
   const editId = modal?.edit ?? null
   const deleteId = modal?.delete ?? null
