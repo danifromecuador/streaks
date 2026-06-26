@@ -72,7 +72,6 @@ export const LinkSection = ({ type, configOpen, onConfigClick }) => {
             onEdit={() => setModal({ edit: item.id })}
             index={index}
             onDragStart={() => setDraggingId(item.id)}
-            onDragOver={() => {}}
             onDrop={(toIndex) => {
               const fromIndex = items.findIndex((i) => i.id === draggingId)
               if (fromIndex !== -1 && fromIndex !== toIndex) reorder(fromIndex, toIndex)
