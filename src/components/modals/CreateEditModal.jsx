@@ -39,7 +39,7 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
   const firstInputRef = useRef(null)
   const urlInputRef = useRef(null)
   // Whether the URL suggestions dropdown is visible.
-  const [showUrlSuggestions, setShowUrlSuggestions] = useState(true)
+  const [showUrlSuggestions, setShowUrlSuggestions] = useState(false)
   // Index of the currently highlighted URL suggestion for keyboard navigation.
   const [activeUrlSuggestionIndex, setActiveUrlSuggestionIndex] = useState(-1)
   const { name, url, errors, setName, setUrl, submit, reset } = useCreateEditForm(onSubmit, isEdit ? initialItem : null)
@@ -81,6 +81,8 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
       return () => clearTimeout(t)
     } else {
       reset()
+      setShowUrlSuggestions(false)
+      setActiveUrlSuggestionIndex(-1)
     }
   }, [open])
 
