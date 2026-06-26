@@ -21,17 +21,19 @@ export const useCreateEditForm = (onSubmit, initialItem = null) => {
     }
   }, [initialItem])
 
+  const reset = () => {
+    setName('')
+    setUrl('')
+    setErrors(INITIAL_ERRORS)
+  }
+
   const submit = () => {
     const next = validateForm(name, url)
     setErrors(next)
     if (next.name || next.url) return
     onSubmit(buildLinkItem({ name, url, id: initialItem?.id }))
-    if (!initialItem) {
-      setName('')
-      setUrl('')
-      setErrors(INITIAL_ERRORS)
-    }
+    if (!initialItem) reset()
   }
 
-  return { name, url, errors, setName, setUrl, submit }
+  return { name, url, errors, setName, setUrl, submit, reset }
 }
