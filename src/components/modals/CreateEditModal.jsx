@@ -105,7 +105,7 @@ export const CreateEditModal = ({ open, onClose, onSubmit, type, isEdit = false,
         aria-labelledby="create-edit-title"
       >
         <h2 id="create-edit-title">{title}</h2>
-        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Cerrar">
+        <button type="button" className={classes.modalCloseBtn} onClick={onClose} aria-label="Close">
           <CloseIcon />
         </button>
         <form onSubmit={handleSubmit} className="flex flex-col gap-[1vw]">
