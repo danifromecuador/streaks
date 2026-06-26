@@ -43,7 +43,19 @@ export const buildLinkItem = ({ name, url, id }) => ({
 })
 
 /** Returns validation errors for name and url. Empty string = no error. */
-export const validateForm = (name, url) => ({
-  name: name.trim() ? '' : 'Enter a name',
-  url: url.trim() ? '' : 'Enter a URL',
-})
+export const validateForm = (name, url) => {
+  const nameError = name.trim() ? '' : 'Enter a name'
+  let urlError = ''
+  const trimmed = url.trim()
+  if (!trimmed) {
+    urlError = 'Enter a URL'
+  } else {
+    try {
+      const { protocol } = new URL(trimmed)
+      if (protocol !== 'http:' && protocol !== 'https:') urlError = 'URL must start with http:// or https://'
+    } catch {
+      urlError = 'Enter a valid URL (e.g. https://example.com)'
+    }
+  }
+  return { name: nameError, url: urlError }
+}
