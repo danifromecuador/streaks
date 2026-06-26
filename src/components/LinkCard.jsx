@@ -12,11 +12,14 @@ export const LinkCard = ({ name, image, url, onDelete, onEdit, id, index, onDrag
   const [visible, setVisible] = useState('hidden')
   const [iconIndex, setIconIndex] = useState(0)
   const [useDefaultIcon, setUseDefaultIcon] = useState(false)
-  const iconUrls = useMemo(() => getDomainIconUrls(url ?? ''), [url])
+  const iconUrls = useMemo(() => {
+    const providers = getDomainIconUrls(url ?? '')
+    return image ? [image, ...providers] : providers
+  }, [url, image])
   useEffect(() => {
     setIconIndex(0)
     setUseDefaultIcon(false)
-  }, [url])
+  }, [url, image])
   const imgSrc = useDefaultIcon || !iconUrls.length
     ? DEFAULT_LINK_ICON
     : iconUrls[iconIndex] ?? DEFAULT_LINK_ICON
